@@ -11,26 +11,57 @@ public class Turret : MonoBehaviour
     public float fireTimer;
     private bool shootReady;
     public GameObject bulletSpawnpoint;
+    [SerializeField]public List<GameObject> enemies;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         shootReady = true;
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (targetlocked)
         {
-            turretTopPart.transform.LookAt(target.transform);
-            turretTopPart.transform.Rotate(0, -90, 0);
-            if (shootReady)
+            try 
             {
-                Shoot();
+                turretTopPart.transform.LookAt(target.transform);
+                turretTopPart.transform.Rotate(0, -90, 0);
+                if (shootReady)
+                {
+                    Shoot();
+                }
+                
+            }
+            catch 
+            {
+                enemies.RemoveAt(0);
             }
             
+
+        }
+    }
+
+        private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            enemies.Add(other.gameObject);
+            target = enemies[0];
+            targetlocked = true;
+            if (targetlocked)
+                Debug.Log("colpito");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            int index = enemies.IndexOf(other.gameObject);
+            enemies.RemoveAt(index);
+            targetlocked = false;
+            if (targetlocked)
+                Debug.Log("colpito");
         }
     }
     void Shoot()
@@ -47,27 +78,93 @@ public class Turret : MonoBehaviour
         yield return new WaitForSeconds(fireTimer);
         shootReady = true;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    shootReady = true;
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if (targetlocked)
+    //    {
+    //        turretTopPart.transform.LookAt(target.transform);
+    //        turretTopPart.transform.Rotate(0, -90, 0);
+    //        if (shootReady)
+    //        {
+    //            Shoot();
+    //        }
+
+    //    }
+    //}
     
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag =="Enemy")
-        {
-            target = other.gameObject;
-            targetlocked = true;
-            if (targetlocked)
-                Debug.Log("colpito");
-        }
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag =="Enemy")
+    //    {
+    //        target = other.gameObject;
+    //        targetlocked = true;
+    //        if (targetlocked)
+    //            Debug.Log("colpito");
+    //    }
+    //    if (other.tag == "IdlePoint")
+    //    {
+    //        target = other.gameObject;
+    //        targetlocked = false;
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            target = other.gameObject;
-            targetlocked = true;
-            
-                
-        }
-    }
-}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Enemy")
+    //    {
+    //        target = other.gameObject;
+    //        targetlocked = true;
+
+
+    //    }
+    //}
+

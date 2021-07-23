@@ -6,11 +6,7 @@ public class Enemyscript : MonoBehaviour
 {
     public float health;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-           
-    }
+    
    
 
 

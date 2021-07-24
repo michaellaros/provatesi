@@ -58,10 +58,6 @@ public class Firegame : MonoBehaviour
     //punteggio del minigioco per il buff e disattiva le fiamme in gioco
     public void Fireoff()
     {
-        
-        
         fireboost += 1;
-        
-
     }
 }

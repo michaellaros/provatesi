@@ -6,8 +6,7 @@ public class Enemyscript : MonoBehaviour
 {
     [SerializeField]
     private float health;
-    
-    
+     
 
     public void TakeDamage(float damage)
     {

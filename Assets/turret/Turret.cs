@@ -43,14 +43,11 @@ public class Turret : MonoBehaviour
             {
                 Shoot();
             }
-
         }
         catch
         {
-            Debug.Log("sono nel catch");
             if (enemies.Count > 0)
             {
-                Debug.Log("sono nel remove");
                 enemies.RemoveAt(0);
             }
             CheckForTarget();
@@ -83,16 +80,19 @@ public class Turret : MonoBehaviour
             target = null;
         }
     }
+
     void Shoot()
     {
         Transform _bullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, Quaternion.identity);
+        _bullet.GetComponent<BulletForTurret>().target = target;
         _bullet.transform.rotation = bulletSpawnpoint.transform.rotation;
         shootReady = false;
-        Invoke("FireRate", reloadTime);
+        StartCoroutine("FireRate");
     }
 
-    private void FireRate()
+    IEnumerator FireRate()
     {
+        yield return new WaitForSeconds(reloadTime);
         shootReady = true;
     }
 }

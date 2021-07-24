@@ -6,30 +6,36 @@ using UnityEngine.UI;
 
 public class Firegame : MonoBehaviour
 {
-    public int cooldownfire;
+    public int cooldownfire = 10;
+    public int minigametime = 5;
     public GameObject[] firebuttons;
     public int fireboost = 0;
     public GameObject firecomponent;
     private bool fire;
-    
-    
-    //gestisce la comparsa del minigioco e della ui del buff
-    private void Update()
+    private Button thisButton;
+
+     public void Start()
     {
-        if (cooldownfire >=1)
+        thisButton = GetComponent<Button>();
+    }
+    //gestisce la comparsa del minigioco e della ui del buff
+     public void Update()
+    {
+        
             
         if (fire)
         {
             GetComponent<Image>().enabled = false;
-            GetComponent<Button>().enabled = false;
+            thisButton.enabled = false;
             firecomponent.SetActive(true);
         }
 
         if(!fire)
         {
             GetComponent<Image>().enabled = true;
-            GetComponent<Button>().enabled = true;
+            thisButton.enabled = true;
             firecomponent.SetActive(false);
+            
         }
     }
     
@@ -44,17 +50,18 @@ public class Firegame : MonoBehaviour
 
     IEnumerator Firereset()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(minigametime);
         Fireboostlenght();
         fire = false;
+        thisButton.interactable = false;
 
         StartCoroutine(Buttoncooldown());
     }
 
     IEnumerator Buttoncooldown()
     {
-        yield return new WaitForSeconds(cooldownfire);
-        cooldownfire = 0;
+        yield return new WaitForSeconds(cooldownfire + minigametime);
+        thisButton.interactable = true;
     }
 
     
@@ -62,13 +69,13 @@ public class Firegame : MonoBehaviour
     public void Fireboostlenght()
     {
         if (fireboost >= 6 && fireboost < 12)
-            cooldownfire = 5;
+            
             Debug.Log(" hai 5 secondi");
         if (fireboost >=12 && fireboost < 18)
-            cooldownfire = 10;
+            
         Debug.Log(" hai 10 secondi");
         if (fireboost >= 18)
-            cooldownfire = 15;
+            
         Debug.Log(" hai 15 secondi");
 
         fireboost = 0;

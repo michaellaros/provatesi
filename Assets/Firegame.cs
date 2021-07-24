@@ -34,16 +34,17 @@ public class Firegame : MonoBehaviour
     public void Firepower()
     {
         fire = true;
-        Invoke("fireReset", 5f);
+        StartCoroutine(Firereset());
     }
 
-
-
-    public void FireReset()
+    IEnumerator Firereset()
     {
+        yield return new WaitForSeconds(5);
         Fireboostlenght();
         fire = false;
     }
+
+    
     //controlla quanto lungo sara' il buff assegnato
     public void Fireboostlenght()
     {
@@ -60,7 +61,7 @@ public class Firegame : MonoBehaviour
         
         
         fireboost += 1;
-        gameObject.SetActive(false);
+        
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ThunderGame : MonoBehaviour
 {
@@ -24,47 +24,31 @@ public class ThunderGame : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-       
+    { 
         thunder = false;
         thisButton = GetComponent<Button>();
     }
-    
     // Update is called once per frame
     void Update()
     {
-
-
-        
-
         if (thunder)
         {
             GetComponent<Image>().enabled = false;
             thisButton.enabled = false;
-            
-            
-
-
         }
-
         if (!thunder)
         {
             GetComponent<Image>().enabled = true;
             thisButton.enabled = true;
-            
-
-
         }
-
-       
-    }
-    
+    } 
     void SpawnThunder()
     {
         // Generate random ball index and random spawn position
         if (thunder == true)
         {
-            Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, 0);
+            float x = Random.Range(-883, 941);
+            Vector2 spawnPos = new Vector2 (x, 600);
 
             int thunderindex = Random.Range(0, thunderPrefabs.Length);
             // instantiate ball at random spawn location

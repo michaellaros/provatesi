@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class FireButton : MonoBehaviour
 {
-    Vector2 pos;
+    Vector3 pos;
 
     // Start is called before the first frame update
     
-
+    
+       
+    
     // Update is called once per frame
     
     public void DisableMe()
@@ -19,11 +21,15 @@ public class FireButton : MonoBehaviour
     }
     public void EnableMe() 
     {
-        float x = Random.Range(10f,Screen.width);
-        float y = Random.Range(10f, Screen.height);
+        
+        float x = Random.Range(-811,954);
+        float y = Random.Range(571, -444);
         GetComponent<Image>().enabled = true;
         GetComponent<Button>().enabled = true;
-        pos = new Vector2(x, y);
-        GetComponent<Transform>().position = pos;
+        pos = new Vector3(x, y, 0);
+        
+        GetComponent<RectTransform>().anchoredPosition = pos;
+        Debug.Log(pos);
+        Debug.Log(GetComponent<RectTransform>().anchoredPosition);
     }
 }

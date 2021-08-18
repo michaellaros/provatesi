@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5488486536687202545}
   - component: {fileID: 5488486536687202544}
   - component: {fileID: 5488486536687202551}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: thunderGame_tesla
   m_TagString: Tesla
   m_Icon: {fileID: 0}
@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.039}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -111, y: -371}
-  m_SizeDelta: {x: 348.87994, y: 348.87994}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 348, y: 348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5488486536687202550
 CanvasRenderer:

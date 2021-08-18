@@ -16,7 +16,7 @@ public class Tesla_behaviour : MonoBehaviour
     {
         if(Input.GetMouseButton(0))
         {
-            GetComponent<RectTransform>().position = Input.mousePosition;
+            GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

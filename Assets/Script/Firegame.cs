@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Firegame : MonoBehaviour
 {
+    public GameObject buttonManager;
     public int cooldownfire = 10;
     public int minigametime = 5;
     public GameObject[] firebuttons;
@@ -43,6 +44,7 @@ public class Firegame : MonoBehaviour
     //il minigioco e' attivo
     public void Firepower()
     {
+        buttonManager.GetComponent<buttonManager>().Manager = true;
         fire = true;
         StartCoroutine(Firereset());
         
@@ -52,6 +54,7 @@ public class Firegame : MonoBehaviour
     {
         yield return new WaitForSeconds(minigametime);
         Fireboostlenght();
+        buttonManager.GetComponent<buttonManager>().Manager = false;
         fire = false;
         thisButton.interactable = false;
 

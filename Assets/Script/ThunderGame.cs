@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ThunderGame : MonoBehaviour
 {
+    public GameObject buttonManager;
     private float spawnLimitXLeft = -891;
     private float spawnLimitXRight = 950;
     private float spawnPosY = 630;
@@ -60,6 +61,7 @@ public class ThunderGame : MonoBehaviour
     }
     public void Thunderpower()
     {
+        buttonManager.GetComponent<buttonManager>().Manager = true;
         thunder = true;
         StartCoroutine(Thunderreset());
         startSpawn = true;
@@ -76,6 +78,7 @@ public class ThunderGame : MonoBehaviour
     {
         yield return new WaitForSeconds(20);
         Thunderboostlenght();
+        buttonManager.GetComponent<buttonManager>().Manager = false;
         thunder = false;
         thisButton.interactable = false;
         

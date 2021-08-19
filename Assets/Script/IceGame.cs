@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class IceGame : MonoBehaviour
 {
+    public GameObject buttonManager;
     private bool ice;
     public GameObject iceComponent;
     private Button thisButton;
@@ -57,6 +58,8 @@ public class IceGame : MonoBehaviour
 
     public void Icepower()
     {
+        buttonManager.GetComponent<buttonManager>().Manager = true;
+        buttonManager.GetComponent<buttonManager>().Manager = false;
         ice = true;
         StartCoroutine(Icereset());
 
@@ -64,9 +67,10 @@ public class IceGame : MonoBehaviour
 
     IEnumerator Icereset()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(10);
         Iceboostlenght();
         ice = false;
+        buttonManager.GetComponent<buttonManager>().Manager = false;
         thisButton.interactable = false;
 
         StartCoroutine(Buttoncooldown());

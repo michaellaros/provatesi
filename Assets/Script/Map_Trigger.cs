@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Map_Trigger : MonoBehaviour
 {
+    
     public bool mapOn;
     public GameObject map;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class Map_Trigger : MonoBehaviour
     public void ToggleMap()
     {
         mapOn = !mapOn;
+
     }
     // Update is called once per frame
 

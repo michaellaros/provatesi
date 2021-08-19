@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class TowerSpawner1 : MonoBehaviour
 {
-    public GameObject tower1;
-    public GameObject tower2;
-    public GameObject tower3;
+    public GameObject redButton;
+    public GameObject greenButton;
+    public GameObject blueButton;
     public GameObject spawnPoint;
-    public bool spawned;
+    public bool clicked;
     //public float x = 0;
     //public float y = 0;
     //public float z = 0;
@@ -22,25 +22,28 @@ public class TowerSpawner1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawned)
+        if(clicked)
         {
-            GetComponent<Image>().color = Color.red;
-            GetComponent<Button>().interactable = false;
+            redButton.SetActive(true);
+            greenButton.SetActive(true);
+            blueButton.SetActive(true);
+
         }
-        if (!spawned)
+        if(!clicked)
         {
-            GetComponent<Image>().color = Color.white;
-            GetComponent<Button>().interactable = true;
+            redButton.SetActive(false);
+            greenButton.SetActive(false);
+            blueButton.SetActive(false);
         }
 
     }
 
-    public void SpawnTower()
+    public void SpawnTowerButtons()
     {
 
-        //Vector3 spawnPos = new Vector3(x, y, z);
-        spawned = true;
-        Instantiate(tower1, spawnPoint.transform.position, Quaternion.identity);
+        clicked = !clicked;
+        
+        
         
     }
 }

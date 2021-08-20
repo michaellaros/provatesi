@@ -76,7 +76,7 @@ namespace TDTK {
 		}
 		
 		void Start(){
-			camT=thisT.GetChild(0);//Camera.main.transform;
+            camT = thisT;//Camera.main.transform;
 			currentZoom=camT.localPosition.z;
 		}
 		

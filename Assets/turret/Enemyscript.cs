@@ -6,7 +6,20 @@ public class Enemyscript : MonoBehaviour
 {
     [SerializeField]
     private float health;
-     
+
+    public float speed = 10f;
+    public Transform pathToFollow;
+    private Transform[] points;
+    private Transform lastWaypoint;
+    private int wavePointIndex;
+
+    public void CreatePath() {
+        points = new Transform[pathToFollow.childCount];
+        for (int i = 0; i < points.Length; i++)
+        {
+            points[i] = pathToFollow.GetChild(i);
+        }
+    }
 
     public void TakeDamage(float damage)
     {

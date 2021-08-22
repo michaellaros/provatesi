@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ThunderGame : MonoBehaviour
 {
+    public GameObject father;
     public GameObject buttonManager;
     private float spawnLimitXLeft = -891;
     private float spawnLimitXRight = 950;

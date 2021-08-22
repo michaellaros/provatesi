@@ -5,24 +5,25 @@ using UnityEngine.UI;
 
 public class IceGame : MonoBehaviour
 {
+    
     public GameObject buttonManager;
-    private bool ice;
+    public bool ice;
     public GameObject iceComponent;
     private Button thisButton;
     public int iceBoost = 0;
     public int cooldownIce = 10;
     public int minigametime = 5;
-    public float rotateSpeed = 5000000;
-    public float speedmultiplier = 20;
+    
+    
     public GameObject floor;
-    private RectTransform rectTransform;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         ice = false;
         thisButton = GetComponent<Button>();
-        rectTransform = floor.GetComponent<RectTransform>();
+        
     }
 
     // Update is called once per frame
@@ -43,16 +44,7 @@ public class IceGame : MonoBehaviour
 
         }
 
-        if (ice && Input.GetMouseButton(0))
-        {
-            rectTransform.Rotate(0, 0, speedmultiplier * rotateSpeed * Time.deltaTime);
-            Debug.Log("sto ruotando");
-        }
-        if (ice && Input.GetMouseButton(1))
-        {
-            rectTransform.Rotate(0, 0, speedmultiplier * -rotateSpeed * Time.deltaTime);
-            Debug.Log("sto ruotando2");
-        }
+       
     }
     
 

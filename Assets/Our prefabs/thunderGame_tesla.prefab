@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5488486536687202545}
   - component: {fileID: 5488486536687202544}
   - component: {fileID: 5488486536687202551}
+  - component: {fileID: 8949599701935772230}
   m_Layer: 5
   m_Name: thunderGame_tesla
   m_TagString: Tesla
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 93b6fdde51ba8b74f8f8ec1d76af0289, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -106,3 +107,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boost: 0
+  waitTime: 0.5
+  anim: {fileID: 8949599701935772230}
+--- !u!111 &8949599701935772230
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488486536687202546}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 22198167fd497b144acc64598a6f5da6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -10,6 +10,7 @@ TagManager:
   - Thunder
   - Tesla
   - GravityForce
+  - IceCube
   layers:
   - Default
   - TransparentFX

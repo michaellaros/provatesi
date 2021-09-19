@@ -7,18 +7,19 @@ public class Tesla_behaviour : MonoBehaviour
     
     public int boost;
     public float waitTime = 0.5f;
+    RectTransform myrecttransform;
     
 
     public void Start()
     {
-       
+        myrecttransform = GetComponent<RectTransform>();
     }
     // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButton(0))
         {
-            this.GetComponent<RectTransform>().anchoredPosition = Input.mousePosition;
+            myrecttransform.anchoredPosition = Input.mousePosition;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

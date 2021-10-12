@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shooter : BNG.Grabbable
 { public GameObject spawnPoint;
     public GameObject Projectile;
-    public float launchVelocity = 500f;
+    public float launchVelocity;
     public bool readyToShoot;
     void Start()
     {
@@ -15,23 +15,13 @@ public class Shooter : BNG.Grabbable
     // Update is called once per frame
      override public void Update()
     {
-        
-        
-            
-
-
-        if (BeingHeld == true && (input.RightTrigger > 0.1f) && readyToShoot)
+        if (readyToShoot && BeingHeld == true && (input.RightTrigger > 0.1f))
         {
-            var projectile = Instantiate(Projectile, spawnPoint.transform.position,Quaternion.identity);
-            projectile.GetComponent<Rigidbody>().AddRelativeForce(transform.forward * launchVelocity);
+            var projectile = Instantiate(Projectile, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            projectile.GetComponent<Rigidbody>().AddForce(spawnPoint.transform.forward * launchVelocity);
             readyToShoot = false;
             Invoke("ReReady", 2);
-
-            
-            
-            
         }
-
     }
     public void ReReady()
     {

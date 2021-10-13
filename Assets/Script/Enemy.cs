@@ -45,22 +45,26 @@ public class Enemy : MonoBehaviour
         }
         nextWaypoint = WaypointArray[currentWaypoint];
         target = WaypointArray[currentWaypoint];
-
+        readyToAttack = true;
     }
 
     private void FixedUpdate()
     {
-        if (obstacleFound!=null && readyToAttack) {
+        if (obstacleFound!=null) {
             StopEnemy();
-            
-            try
+            if (readyToAttack)
             {
-                obstacleFound.GetComponent<Door>().TakeDamage(damage);
-                Attack();
+                try
+                {
+                    obstacleFound.GetComponent<Door>().TakeDamage(damage);
+                    Attack();
+                }
+                catch
+                {
+                    Debug.Log("Non ha un componente door");
+                }
             }
-            catch {
-                Debug.Log("Non ha un componente door");
-            }
+            return;
         }
         SelectTarget();
         distanceFromTarget = Vector3.Distance(transform.position, target.position);
@@ -111,10 +115,18 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Obstacle")){
+
+        if (other.CompareTag("Obstacle"))
+        {
             obstacleFound = other.transform.gameObject;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Obstacle")) {
+            obstacleFound = null;
         }
     }
     void SelectTarget() {

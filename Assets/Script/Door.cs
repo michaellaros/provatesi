@@ -5,43 +5,30 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public float health;
+    private bool dead;
     public Transform DoorLeft;
     public Transform DoorRight;
 
+    public void Start()
+    {
+        dead = false;
+    }
     public void TakeDamage(float dmg) {
         health = health - dmg;
-        if (health < 0) {
+        if (health <= 0 && !dead) {
+            dead = true;
             Open();
             return;
         }
-        StartCoroutine("PulseLeft");
     }
     private void Open() {
+        GetComponent<BoxCollider>().isTrigger = false;
+        DoorLeft.transform.Rotate(0, -90, 0);
+        DoorRight.transform.Rotate(0, 90, 0);
+        Invoke("DisableCollider", 0.1f);
+    }
+    private void DisableCollider() {
         GetComponent<BoxCollider>().enabled = false;
-        StartCoroutine("ShutOpen");
     }
-    IEnumerator Pulse() {
-        while (DoorLeft.position.z >= -0.2f) {
-            DoorLeft.position = new Vector3(0,0,(DoorLeft.position.z-0.03f));
-            DoorRight.position = new Vector3(0,0,(DoorRight.position.z-0.03f));
-            new WaitForSeconds(0.1f);
-        }
-        while (DoorLeft.position.z >= 0)
-        {
-            DoorLeft.position = new Vector3(0, 0, (DoorLeft.position.z + 0.03f));
-            DoorRight.position = new Vector3(0, 0, (DoorRight.position.z + 0.03f));
-            new WaitForSeconds(0.1f);
-        }
-        return null;
-    }
-    IEnumerator ShutOpen()
-    {
-        while (DoorLeft.rotation.y >= -90f)
-        {
-            DoorLeft.transform.Rotate(0, -10, 0);
-            DoorRight.transform.Rotate(0, 10, 0);
-            new WaitForSeconds(0.1f);
-        }
-        return null;
-    }
+
 }

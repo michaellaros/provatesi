@@ -128,7 +128,8 @@ public class WaveSpawner : MonoBehaviour {
 		Debug.Log("Spawning Enemy: " + _enemy.name);
 
 		Transform _sp = spawnPoints[ Random.Range (0, spawnPoints.Length) ];
-		Instantiate(_enemy, _sp.position, _sp.rotation);
+		var enemy = Instantiate(_enemy, _sp.position, _sp.rotation);
+        enemy.transform.SetParent(_sp);
 	}
 
 }

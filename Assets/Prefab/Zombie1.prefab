@@ -234,7 +234,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98863ff715085f849a977ba386286d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoppingDistance: 1
+  stoppingDistance: 2
+  minDistanceForNextWaypoint: 4
+  distanceFromTarget: 0
+  distanceFromWaypoint: 0
+  distanceFromPlayer: 0
+  minDistancePlayerChase: 20
+  maxDistancePlayerChase: 30
 --- !u!195 &959031379
 NavMeshAgent:
   m_ObjectHideFlags: 0

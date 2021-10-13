@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     NavMeshAgent agent;
 
-    public Transform pathway;
+    private Transform pathway;
     private Transform[] WaypointArray;
     private int currentWaypoint;
     private Transform nextWaypoint;
@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
         currentWaypoint = 0;
+        pathway = transform.parent.parent;
         WaypointArray = new Transform[pathway.childCount];
         for (int i = 0; i < pathway.childCount; i++)
         {

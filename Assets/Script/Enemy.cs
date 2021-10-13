@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public float damage;
+    public float attackRate;
+    private bool readyToAttack;
     [SerializeField] float stoppingDistance;
 
     NavMeshAgent agent;
@@ -48,12 +50,13 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (obstacleFound!=null) {
+        if (obstacleFound!=null && readyToAttack) {
             StopEnemy();
-            //animator attack TODO
+            
             try
             {
                 obstacleFound.GetComponent<Door>().TakeDamage(damage);
+                Attack();
             }
             catch {
                 Debug.Log("Non ha un componente door");
@@ -64,12 +67,21 @@ public class Enemy : MonoBehaviour
         if (distanceFromTarget < stoppingDistance)
         {
             StopEnemy();
+            if (target == _player.transform && readyToAttack) {
+                Attack();
+            }
             return;
         }
         else
         {
             GoToTarget();
         }
+    }
+
+    private void Attack() {
+        //animator attack TODO
+        readyToAttack = false;
+        Invoke("AgainReadyToAttack", attackRate);
     }
 
     private void GoToTarget()
@@ -101,7 +113,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("obstacle")){
+        if (other.CompareTag("Obstacle")){
             obstacleFound = other.transform.gameObject;
         }
     }
@@ -124,5 +136,7 @@ public class Enemy : MonoBehaviour
         }
         target = nextWaypoint;
     }
-
+    void AgainReadyToAttack() {
+        readyToAttack = true;
+    }
 }

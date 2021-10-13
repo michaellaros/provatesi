@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98863ff715085f849a977ba386286d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   stoppingDistance: 2
   minDistanceForNextWaypoint: 4
   distanceFromTarget: 0
@@ -273,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 330500823846571630, guid: f198d14b10c72fa499f7c60b17fbc603,
         type: 3}
       propertyPath: m_Name
-      value: Zombie1
+      value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 330500823846571630, guid: f198d14b10c72fa499f7c60b17fbc603,
         type: 3}

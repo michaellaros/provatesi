@@ -26,8 +26,11 @@ public class Enemy : MonoBehaviour
     public float minDistancePlayerChase;
     public float maxDistancePlayerChase;
 
+    private bool obstacleFound;
+
     private void Start()
     {
+        obstacleFound = false;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -85,6 +88,12 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("obstacle")){
+            obstacleFound = true;
+        }
+    }
     void SelectTarget() {
         distanceFromWaypoint = Vector3.Distance(transform.position, nextWaypoint.position);
         distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);

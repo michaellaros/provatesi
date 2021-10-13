@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public float damage;
     [SerializeField] float stoppingDistance;
 
     NavMeshAgent agent;
@@ -26,11 +27,10 @@ public class Enemy : MonoBehaviour
     public float minDistancePlayerChase;
     public float maxDistancePlayerChase;
 
-    private bool obstacleFound;
+    private GameObject obstacleFound;
 
     private void Start()
     {
-        obstacleFound = false;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -48,29 +48,40 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (obstacleFound!=null) {
+            StopEnemy();
+            //animator attack TODO
+            try
+            {
+                obstacleFound.GetComponent<Door>().TakeDamage(damage);
+            }
+            catch {
+                Debug.Log("Non ha un componente door");
+            }
+        }
         SelectTarget();
         distanceFromTarget = Vector3.Distance(transform.position, target.position);
         if (distanceFromTarget < stoppingDistance)
         {
-            animator.SetBool("IsMoving", false);
             StopEnemy();
             return;
         }
         else
         {
-            animator.SetBool("IsMoving", true);
             GoToTarget();
         }
     }
 
     private void GoToTarget()
     {
+        animator.SetBool("IsMoving", true);
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
 
     private void StopEnemy()
     {
+        animator.SetBool("IsMoving", false);
         agent.isStopped = true;
     }
 
@@ -88,10 +99,10 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("obstacle")){
-            obstacleFound = true;
+            obstacleFound = other.transform.gameObject;
         }
     }
     void SelectTarget() {

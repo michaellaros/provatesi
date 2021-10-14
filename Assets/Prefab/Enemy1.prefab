@@ -237,6 +237,7 @@ MonoBehaviour:
   damage: 10
   attackRate: 2
   stoppingDistance: 2
+  health: 0
   minDistanceForNextWaypoint: 4
   minDistancePlayerChase: 40
   maxDistancePlayerChase: 60

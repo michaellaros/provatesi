@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
     private GameObject _player;
 
     private Animator animator;
-    private float health;
+
+    [SerializeField] private float health;
 
     public float minDistanceForNextWaypoint;
     private float distanceFromTarget;
@@ -119,7 +120,7 @@ public class Enemy : MonoBehaviour
         int dropNumber = Random.RandomRange(minDrop, maxDrop);
         for (int i = 0; i < dropNumber; i++)
         {
-            var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length - 1)], transform.position, transform.rotation);
+            var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length)], transform.position, transform.rotation);
             drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 500);
         }
     }

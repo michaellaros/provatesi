@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooter_Fionda : BNG.Grabbable
 {   public GameObject spawnPoint;
-    public GameObject Projectile;
+    public GameObject projectile;
     public float launchVelocity;
     public bool readyToShoot;
     void Start()
@@ -17,8 +17,8 @@ public class Shooter_Fionda : BNG.Grabbable
     {
         if (readyToShoot && BeingHeld == true && (input.RightTrigger > 0.1f))
         {
-            var projectile = Instantiate(Projectile, spawnPoint.transform.position, spawnPoint.transform.rotation);
-            projectile.GetComponent<Rigidbody>().AddForce(spawnPoint.transform.forward * launchVelocity);
+            var instanceProjectile = Instantiate(projectile, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            instanceProjectile.GetComponent<Rigidbody>().AddForce(spawnPoint.transform.forward * launchVelocity);
             readyToShoot = false;
             Invoke("ReReady", 2);
         }

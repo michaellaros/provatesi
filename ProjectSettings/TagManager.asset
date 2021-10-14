@@ -12,6 +12,8 @@ TagManager:
   - GravityForce
   - IceCube
   - Obstacle
+  - Mine
+  - Material
   layers:
   - Default
   - TransparentFX

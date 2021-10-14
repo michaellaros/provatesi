@@ -238,11 +238,16 @@ MonoBehaviour:
   attackRate: 2
   stoppingDistance: 2
   minDistanceForNextWaypoint: 4
-  distanceFromTarget: 0
-  distanceFromWaypoint: 0
-  distanceFromPlayer: 0
   minDistancePlayerChase: 40
   maxDistancePlayerChase: 60
+  dopppedItem:
+  - {fileID: 3761745242275073796, guid: 305a388b6539d3041a283b76508de030, type: 3}
+  - {fileID: 1068553519891591867, guid: 4bb5291a21fb70a42ba663daf3777d33, type: 3}
+  - {fileID: 8307322894754887973, guid: 53168ceb81c92934d9d8edab7fef6d9e, type: 3}
+  - {fileID: 5662333279100532861, guid: d9449dcf4f9e2a64e84d9337dcb438eb, type: 3}
+  - {fileID: 439726086457075563, guid: 9de82d5e406d9d544ac387c521e08a2f, type: 3}
+  minDrop: 2
+  maxDrop: 10
 --- !u!195 &959031379
 NavMeshAgent:
   m_ObjectHideFlags: 0

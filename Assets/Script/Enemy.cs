@@ -23,13 +23,17 @@ public class Enemy : MonoBehaviour
     private float health;
 
     public float minDistanceForNextWaypoint;
-    public float distanceFromTarget;
-    public float distanceFromWaypoint;
-    public float distanceFromPlayer;
+    private float distanceFromTarget;
+    private float distanceFromWaypoint;
+    private float distanceFromPlayer;
     public float minDistancePlayerChase;
     public float maxDistancePlayerChase;
 
     private GameObject obstacleFound;
+
+    public GameObject[] dopppedItem;
+    public int minDrop;
+    public int maxDrop;
 
     private void Start()
     {
@@ -101,18 +105,23 @@ public class Enemy : MonoBehaviour
         agent.isStopped = true;
     }
 
-    public void TakeDamage(int amount) {
+    public void TakeDamage(float amount) {
         health -= amount;
         if (health <= 0f) {
             Die();
         }
     }
     void Die() {
-        //DropItem();
+        DropItem();
         Destroy(gameObject);
     }
     void DropItem() {
-
+        int dropNumber = Random.RandomRange(minDrop, maxDrop);
+        for (int i = 0; i < dropNumber; i++)
+        {
+            var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length - 1)], transform.position, transform.rotation);
+            drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 500);
+        }
     }
 
     public void OnTriggerStay(Collider other)

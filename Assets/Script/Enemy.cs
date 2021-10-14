@@ -51,8 +51,6 @@ public class Enemy : MonoBehaviour
         nextWaypoint = WaypointArray[currentWaypoint];
         target = WaypointArray[currentWaypoint];
         readyToAttack = true;
-        TakeDamage(1f);
-        TakeDamage(1f);
     }
 
     private void FixedUpdate()

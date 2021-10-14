@@ -241,8 +241,8 @@ MonoBehaviour:
   distanceFromTarget: 0
   distanceFromWaypoint: 0
   distanceFromPlayer: 0
-  minDistancePlayerChase: 20
-  maxDistancePlayerChase: 30
+  minDistancePlayerChase: 40
+  maxDistancePlayerChase: 60
 --- !u!195 &959031379
 NavMeshAgent:
   m_ObjectHideFlags: 0

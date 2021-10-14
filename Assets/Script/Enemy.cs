@@ -135,6 +135,7 @@ public class Enemy : MonoBehaviour
         if (distanceFromPlayer < minDistancePlayerChase)
         {
             target = _player.transform;
+            return;
         }
         if (distanceFromWaypoint < minDistanceForNextWaypoint){
             currentWaypoint++;

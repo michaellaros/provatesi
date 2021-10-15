@@ -17,13 +17,16 @@ namespace BNG {
         float lastMoveTime = -1f;
         bool movingForward = true;
         AudioSource audioSource;
+        private Vector3 startPosition;
+        private Quaternion startQuaternion;
 
         void Start() {
             // Start off by orienting the zipline holder
             if(ZiplineEnd != null) {
                 transform.LookAt(ZiplineEnd.position);
             }
-
+            startPosition = transform.position;
+            startQuaternion = transform.rotation;
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -47,6 +50,8 @@ namespace BNG {
             }
             else if(audioSource.isPlaying) {
                 audioSource.Stop();
+                //moveTowards(ZiplineStart.position, false);
+                //returnToStart();
             }
         }
 
@@ -106,6 +111,10 @@ namespace BNG {
             if(input  && thisGrabber) {
                 input.VibrateController(0.1f, 0.1f, 0.1f, thisGrabber.HandSide);
             }
+        }
+        void returnToStart() {
+            transform.position = startPosition;
+            transform.rotation = startQuaternion;
         }
     }
 }

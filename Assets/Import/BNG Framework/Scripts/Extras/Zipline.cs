@@ -17,16 +17,12 @@ namespace BNG {
         float lastMoveTime = -1f;
         bool movingForward = true;
         AudioSource audioSource;
-        private Vector3 startPosition;
-        private Quaternion startQuaternion;
 
         void Start() {
             // Start off by orienting the zipline holder
             if(ZiplineEnd != null) {
                 transform.LookAt(ZiplineEnd.position);
             }
-            startPosition = transform.position;
-            startQuaternion = transform.rotation;
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -50,8 +46,7 @@ namespace BNG {
             }
             else if(audioSource.isPlaying) {
                 audioSource.Stop();
-                //moveTowards(ZiplineStart.position, false);
-                //returnToStart();
+                moveTowards(ZiplineStart.position, false);
             }
         }
 
@@ -84,37 +79,39 @@ namespace BNG {
             base.OnButton2();
         }
 
-        void moveTowards(Vector3 pos, bool forwardDirection) {
+        void moveTowards(Vector3 pos, bool forwardDirection)
+        {
 
             lastMoveTime = Time.time;
             movingForward = forwardDirection;
 
             // Orient Zipline
-            if (forwardDirection) {
+            if (forwardDirection)
+            {
                 transform.LookAt(pos);
             }
-            else {
+            else
+            {
                 // If backward, look at object from rear
                 transform.LookAt(2 * transform.position - pos);
             }
 
             // Linear Movement
-            if (UseLinearMovement) {
+            if (UseLinearMovement)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, pos, ZiplineSpeed * Time.fixedDeltaTime);
             }
             // Lerp
-            else {
+            else
+            {
                 transform.position = Vector3.Lerp(transform.position, pos, ZiplineSpeed * Time.deltaTime);
             }
 
             // Haptics
-            if(input  && thisGrabber) {
+            if (input && thisGrabber)
+            {
                 input.VibrateController(0.1f, 0.1f, 0.1f, thisGrabber.HandSide);
             }
-        }
-        void returnToStart() {
-            transform.position = startPosition;
-            transform.rotation = startQuaternion;
         }
     }
 }

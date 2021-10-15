@@ -18,7 +18,6 @@ public class PlayerBehavior : MonoBehaviour
         singleton = this;
         isInvincible = false;
         isHealing = true;
-        StartCoroutine("SubstractOne");
         StartCoroutine("Heal");
     }
 

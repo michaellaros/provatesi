@@ -87,12 +87,11 @@ public class Turret : MonoBehaviour
         _bullet.GetComponent<BulletForTurret>().target = target;
         _bullet.transform.rotation = bulletSpawnpoint.transform.rotation;
         shootReady = false;
-        StartCoroutine("FireRate");
+        Invoke("FireRate", reloadTime);
     }
 
-    IEnumerator FireRate()
+    void FireRate()
     {
-        yield return new WaitForSeconds(reloadTime);
         shootReady = true;
     }
 }

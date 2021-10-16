@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public float damage;
+    public float objectiveDamage;
     public float attackRate;
+    public Transform attackProjectile;
+    public Transform spawnPointProjectile;
     private bool readyToAttack;
     [SerializeField] float stoppingDistance;
 
@@ -75,8 +78,10 @@ public class Enemy : MonoBehaviour
         distanceFromTarget = Vector3.Distance(transform.position, target.position);
         if (distanceFromTarget < stoppingDistance)
         {
+            FollowTarget();
             StopEnemy();
             if (target == _player.transform && readyToAttack) {
+                Shoot();
                 Attack();
             }
             return;
@@ -92,7 +97,11 @@ public class Enemy : MonoBehaviour
         readyToAttack = false;
         Invoke("AgainReadyToAttack", attackRate);
     }
-
+    void Shoot()
+    {
+        Transform _bullet = Instantiate(attackProjectile, spawnPointProjectile.position, spawnPointProjectile.rotation);
+        _bullet.GetComponent<EnemyBullet>().target = _player;
+    }
     private void GoToTarget()
     {
         animator.SetBool("IsMoving", true);
@@ -109,15 +118,20 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount) {
         health -= amount;
         if (health <= 0f) {
-            Die();
+            Die(true);
         }
     }
-    void Die() {
-        DropItem();
+    void Die(bool drop) {
+        if (drop)
+        {
+            DropItem();
+            //ragdoll code
+        }
+        //add event to tell pc
         Destroy(gameObject);
     }
     void DropItem() {
-        int dropNumber = Random.RandomRange(minDrop, maxDrop);
+        int dropNumber = Random.Range(minDrop, maxDrop);
         for (int i = 0; i < dropNumber; i++)
         {
             var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length)], transform.position, transform.rotation);
@@ -127,10 +141,14 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-
         if (other.CompareTag("Obstacle"))
         {
             obstacleFound = other.transform.gameObject;
+        }
+        if (other.CompareTag("Objective"))
+        {
+            obstacleFound.GetComponent<Objective>().TakeDamage(objectiveDamage);
+            Die(false);
         }
     }
     public void OnTriggerExit(Collider other)
@@ -161,5 +179,13 @@ public class Enemy : MonoBehaviour
     }
     void AgainReadyToAttack() {
         readyToAttack = true;
+    }
+    public void FollowTarget()
+    {
+        Vector3 directionToTarget = target.transform.position - transform.position;
+        Vector3 currentDirection = transform.forward;
+        float maxTurnSpeed = 90f; // degrees per second
+        Vector3 resultingDirection = Vector3.RotateTowards(currentDirection, directionToTarget, maxTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 10f);
+        transform.rotation = Quaternion.LookRotation(resultingDirection);
     }
 }

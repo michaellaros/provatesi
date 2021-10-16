@@ -235,12 +235,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  objectiveDamage: 1
   attackRate: 2
-  stoppingDistance: 2
-  health: 0
-  minDistanceForNextWaypoint: 4
-  minDistancePlayerChase: 40
-  maxDistancePlayerChase: 60
+  attackProjectile: {fileID: 3538906115082969408, guid: bad2cc23e3e69ad42bd242711380e0be,
+    type: 3}
+  spawnPointProjectile: {fileID: 2529195056220481293}
+  stoppingDistance: 5
+  health: 10
+  minDistanceForNextWaypoint: 6
+  minDistancePlayerChase: 20
+  maxDistancePlayerChase: 35
   dopppedItem:
   - {fileID: 3761745242275073796, guid: 305a388b6539d3041a283b76508de030, type: 3}
   - {fileID: 1068553519891591867, guid: 4bb5291a21fb70a42ba663daf3777d33, type: 3}
@@ -335,8 +339,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3462981794882050298, guid: f198d14b10c72fa499f7c60b17fbc603,
         type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.133
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462981794882050298, guid: f198d14b10c72fa499f7c60b17fbc603,
+        type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.724
+      value: 0.809
       objectReference: {fileID: 0}
     - target: {fileID: 3969814986432278023, guid: f198d14b10c72fa499f7c60b17fbc603,
         type: 3}
@@ -357,6 +366,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.7240001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863762124949138941, guid: f198d14b10c72fa499f7c60b17fbc603,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.553
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863762124949138941, guid: f198d14b10c72fa499f7c60b17fbc603,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863762124949138941, guid: f198d14b10c72fa499f7c60b17fbc603,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.553
       objectReference: {fileID: 0}
     - target: {fileID: 4965818335860535433, guid: f198d14b10c72fa499f7c60b17fbc603,
         type: 3}
@@ -443,11 +467,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.724
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1241110865600163220, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1943138818200397835, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711555, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711565, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711564, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711567, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711561, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711560, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
+    - {fileID: 1587109572191711566, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f198d14b10c72fa499f7c60b17fbc603, type: 3}
 --- !u!1 &7273349533767877790 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 330500823846571630, guid: f198d14b10c72fa499f7c60b17fbc603,
+    type: 3}
+  m_PrefabInstance: {fileID: 6946253094542215920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2529195056220481293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4863762124949138941, guid: f198d14b10c72fa499f7c60b17fbc603,
     type: 3}
   m_PrefabInstance: {fileID: 6946253094542215920}
   m_PrefabAsset: {fileID: 0}

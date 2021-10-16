@@ -14,6 +14,8 @@ TagManager:
   - Obstacle
   - Mine
   - Material
+  - Objective
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

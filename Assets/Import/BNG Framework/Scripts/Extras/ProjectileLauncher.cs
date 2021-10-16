@@ -15,6 +15,7 @@ namespace BNG {
         public AudioClip LaunchSound;
 
         public ParticleSystem LaunchParticles;
+        public Transform hinge;
 
         /// <summary>
         /// Where the projectile will launch from
@@ -64,6 +65,9 @@ namespace BNG {
 
         public float GetInitialProjectileForce() {
             return _initialProjectileForce;
+        }
+        public void Rotate() {
+            transform.Rotate(hinge.rotation.x+45f, 0, 0);
         }
     }
 }

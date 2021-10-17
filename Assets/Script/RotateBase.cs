@@ -22,8 +22,7 @@ public class RotateBase : MonoBehaviour
         {
             try
             {
-                print(transform.eulerAngles.x);
-                print(transform.eulerAngles.x + (rotation / rotationSpeed));
+
                 rotation = rotator.GetComponent<BNG.JoystickControl>().angleX;
                 if ((transform.eulerAngles.x + (rotation / rotationSpeed)) < maxRotationAngle &&
                     (transform.eulerAngles.x + (rotation / rotationSpeed)) > minRotationAngle)

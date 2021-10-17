@@ -16,6 +16,9 @@ namespace BNG {
 
         public ParticleSystem LaunchParticles;
         public Transform hinge;
+        private bool fireReady;
+        public float reloadTime;
+
 
         /// <summary>
         /// Where the projectile will launch from
@@ -28,6 +31,7 @@ namespace BNG {
         void Start() {
             // Setup initial velocity for launcher so we can modify it later
             _initialProjectileForce = ProjectileForce;
+            fireReady = true;
         }
 
         /// <summary>
@@ -56,7 +60,12 @@ namespace BNG {
         }
 
         public void ShootProjectile() {
-            ShootProjectile(ProjectileForce);
+            if (fireReady)
+            {
+                fireReady = false;
+                ShootProjectile(ProjectileForce);
+                Invoke("FireReadyTrue", reloadTime);
+            }
         }
 
         public void SetForce(float force) {
@@ -65,6 +74,9 @@ namespace BNG {
 
         public float GetInitialProjectileForce() {
             return _initialProjectileForce;
+        }
+        private void FireReadyTrue() {
+            fireReady = true;
         }
     }
 }

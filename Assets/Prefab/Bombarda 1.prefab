@@ -649,6 +649,11 @@ PrefabInstance:
       propertyPath: hinge
       value: 
       objectReference: {fileID: 2990482537308990221}
+    - target: {fileID: 4802490967735879994, guid: f96c5f7ce53471a4fbf5b098178fe532,
+        type: 3}
+      propertyPath: reloadTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4802490968171723798, guid: f96c5f7ce53471a4fbf5b098178fe532,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

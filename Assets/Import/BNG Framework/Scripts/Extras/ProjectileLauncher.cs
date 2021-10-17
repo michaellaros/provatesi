@@ -99,11 +99,11 @@ namespace BNG {
             public void AutoShootProjectile(GameObject target)
         {
 
-            print(" sparando a ");
+            
             _bullet = AutoShootProjectile(ProjectileForce);
-            print("ho sparato");
+            
             _bullet.GetComponent<BulletForTurret>().target = target;
-            print("sto sparando a " + target);
+            
             
 
         }

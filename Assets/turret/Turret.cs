@@ -21,14 +21,16 @@ public class Turret : MonoBehaviour
     public GameObject bulletSpawnpoint;
     //lista dei nemici
     public List<GameObject> enemies;
-
-
+    public GameObject projectileLauncherOBJ;
+    public bool autoFire;
     private void Start()
     {
+        autoFire = true;
         shootReady = true;
     }
     void FixedUpdate()
     {
+         
         if (enemies.Count > 0)
         {
             TryToShoot();
@@ -39,9 +41,11 @@ public class Turret : MonoBehaviour
         {
             turretTopPart.transform.LookAt(target.transform);
             turretTopPart.transform.Rotate(0, -90, 0);
-            if (shootReady)
+            if (autoFire && shootReady)
             {
-                Shoot();
+                projectileLauncherOBJ.GetComponent<BNG.ProjectileLauncher>().AutoShootProjectile(target);
+                shootReady = false;
+                Invoke("FireRate", reloadTime);
             }
         }
         catch

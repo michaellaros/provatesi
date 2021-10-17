@@ -23,7 +23,7 @@ public class BulletForTurret : MonoBehaviour
         if (other.tag == "Enemy")
         {
             target = other.gameObject;
-            target.GetComponent<Enemyscript>().TakeDamage(damage);
+            target.GetComponent<Enemy>().TakeDamage(damage);
         }
         Destroy(this.gameObject);
     }

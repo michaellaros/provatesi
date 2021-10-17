@@ -11,7 +11,7 @@ public class PlayerBehavior : MonoBehaviour
     public float invincibleTime;
     public float dealyHealingTime;
     public UnityEvent gameOverEvent;
-    public GameObject spawners;
+    public GameObject spawnManager;
     public GameObject gun;
     private void OnEnable()
     {
@@ -51,7 +51,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         //ferma il gioco
         GetComponent<CapsuleCollider>().enabled = false;
-        spawners.SetActive(false);
+        spawnManager.SetActive(false);
         gameOverEvent.Invoke();
     }
     public void isInvincibleFalse()
@@ -71,7 +71,7 @@ public class PlayerBehavior : MonoBehaviour
             { 
                 health += 1f;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

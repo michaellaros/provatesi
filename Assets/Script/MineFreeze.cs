@@ -18,6 +18,7 @@ public class MineFreeze : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         primoImpatto = true;
         primoImpattoEX = true;
+        print("sono nato");
     }
 
     // Update is called once per frame

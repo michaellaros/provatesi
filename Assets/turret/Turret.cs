@@ -16,7 +16,7 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private float reloadTime;
     //booleano se la torretta è carica o meno
-    private bool shootReady;
+    public bool shootReady;
     //canna di fuoco della torretta
     public GameObject bulletSpawnpoint;
     //lista dei nemici
@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
     public bool autoFire;
     private void Start()
     {
-        autoFire = true;
+        
         shootReady = true;
     }
     void FixedUpdate()
@@ -40,11 +40,12 @@ public class Turret : MonoBehaviour
         try
         {
             turretTopPart.transform.LookAt(target.transform);
-            turretTopPart.transform.Rotate(0, -90, 0);
+            
             if (autoFire && shootReady)
             {
-                projectileLauncherOBJ.GetComponent<BNG.ProjectileLauncher>().AutoShootProjectile(target);
                 shootReady = false;
+                projectileLauncherOBJ.GetComponent<BNG.ProjectileLauncher>().AutoShootProjectile(target);
+                
                 Invoke("FireRate", reloadTime);
             }
         }
@@ -85,17 +86,18 @@ public class Turret : MonoBehaviour
         }
     }
 
-    void Shoot()
-    {
-        Transform _bullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, Quaternion.identity);
-        _bullet.GetComponent<BulletForTurret>().target = target;
-        _bullet.transform.rotation = bulletSpawnpoint.transform.rotation;
-        shootReady = false;
-        Invoke("FireRate", reloadTime);
-    }
+    //void Shoot()
+    //{
+    //    Transform _bullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, Quaternion.identity);
+    //    _bullet.GetComponent<BulletForTurret>().target = target;
+    //    _bullet.transform.rotation = bulletSpawnpoint.transform.rotation;
+    //    shootReady = false;
+    //    Invoke("FireRate", reloadTime);
+    //}
 
     void FireRate()
     {
         shootReady = true;
+        print("torno vero");
     }
 }

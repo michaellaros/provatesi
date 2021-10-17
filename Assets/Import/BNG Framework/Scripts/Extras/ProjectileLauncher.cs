@@ -67,15 +67,43 @@ namespace BNG {
                 fireReady = false;
                 ShootProjectile(ProjectileForce);
                 Invoke("FireReadyTrue", reloadTime);
+                
 
             }
         }
-        public void AutoShootProjectile(GameObject target)
+
+        public GameObject AutoShootProjectile(float projectileForce)
         {
-            
-            
-            _bullet = ShootProjectile(ProjectileForce);
+
+            if (MuzzleTransform && ProjectileAuto)
+            {
+                GameObject launched = Instantiate(ProjectileAuto, MuzzleTransform.transform.position, MuzzleTransform.transform.rotation) as GameObject;
+                launched.transform.position = MuzzleTransform.transform.position;
+                launched.transform.rotation = MuzzleTransform.transform.rotation;
+
+                launched.GetComponentInChildren<Rigidbody>().AddForce(MuzzleTransform.forward * projectileForce, ForceMode.VelocityChange);
+
+                VRUtils.Instance.PlaySpatialClipAt(LaunchSound, launched.transform.position, 1f);
+
+                if (LaunchParticles)
+                {
+                    LaunchParticles.Play();
+                }
+
+                return launched;
+            }
+
+            return null;
+
+        }
+            public void AutoShootProjectile(GameObject target)
+        {
+
+            print(" sparando a ");
+            _bullet = AutoShootProjectile(ProjectileForce);
+            print("ho sparato");
             _bullet.GetComponent<BulletForTurret>().target = target;
+            print("sto sparando a " + target);
             
 
         }

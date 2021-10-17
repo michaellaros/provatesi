@@ -55,11 +55,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b9f0ff530dce347b71aeb31012f93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileObject: {fileID: 7124077096619726795, guid: 10c35245ad06ce54889312401eb6fb81,
+  ProjectileObject: {fileID: 3397687657012961505, guid: d6cda8d9f7c169343aff1ba34c4ae487,
     type: 3}
-  ProjectileForce: 15
+  ProjectileForce: 20
   LaunchSound: {fileID: 8300000, guid: 5b096d3829195954e959ce0ec63ca481, type: 3}
   LaunchParticles: {fileID: 0}
+  hinge: {fileID: 0}
   MuzzleTransform: {fileID: 4802490968306308406}
 --- !u!1 &4802490968171723795
 GameObject:

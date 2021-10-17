@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class RotateBase : MonoBehaviour
 {
-    public Transform knob;
-    public void Rotate() {
-        transform.Rotate(0,knob.rotation.y,0);
+
+    public Transform rotator;
+
+    public void RotateY()
+    {
+        transform.Rotate(0, rotator.rotation.y, 0);
+    }
+    public void RotateX()
+    {
+        transform.Rotate(rotator.rotation.x,0, 0);
     }
 }

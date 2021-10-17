@@ -147,8 +147,14 @@ public class Enemy : MonoBehaviour
         }
         if (other.CompareTag("Objective"))
         {
-            obstacleFound.GetComponent<Objective>().TakeDamage(objectiveDamage);
-            Die(false);
+            try
+            {
+                obstacleFound.GetComponent<Objective>().TakeDamage(objectiveDamage);
+                Die(false);
+            }
+            catch {
+
+            }
         }
     }
     public void OnTriggerExit(Collider other)

@@ -9,6 +9,7 @@ namespace BNG {
         /// Launch this from the 
         /// </summary>
         public GameObject ProjectileObject;
+        public GameObject ProjectileAuto;
 
         public float ProjectileForce = 15f;
 
@@ -18,7 +19,8 @@ namespace BNG {
         public Transform hinge;
         private bool fireReady;
         public float reloadTime;
-
+        private GameObject _bullet;
+        
 
         /// <summary>
         /// Where the projectile will launch from
@@ -65,7 +67,17 @@ namespace BNG {
                 fireReady = false;
                 ShootProjectile(ProjectileForce);
                 Invoke("FireReadyTrue", reloadTime);
+
             }
+        }
+        public void AutoShootProjectile(GameObject target)
+        {
+            
+            
+            _bullet = ShootProjectile(ProjectileForce);
+            _bullet.GetComponent<BulletForTurret>().target = target;
+            
+
         }
 
         public void SetForce(float force) {
@@ -75,7 +87,7 @@ namespace BNG {
         public float GetInitialProjectileForce() {
             return _initialProjectileForce;
         }
-        private void FireReadyTrue() {
+        public void FireReadyTrue() {
             fireReady = true;
         }
     }

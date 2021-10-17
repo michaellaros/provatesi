@@ -31167,205 +31167,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619392499}
   m_Mesh: {fileID: 4300000, guid: 1f61f9023149fdd4f8030b05848fbb9b, type: 3}
---- !u!1001 &621230964
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 597562632}
-    m_Modifications:
-    - target: {fileID: 2129587651359434134, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_Name
-      value: Joystick
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 121
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.013
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.2005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.8194
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.67984605
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7333549
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -94.337
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587651359434138, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: ParentToHands
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470167, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: DeadZone
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: KinematicWhileInactive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6691768086823825392}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 6691768086823825392}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickChange.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6691768086823825396}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 6691768086823825396}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetMotorTorqueInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetSteeringAngle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2129587653096470175, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460937266720982994, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460937266720982994, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.875
-      objectReference: {fileID: 0}
-    - target: {fileID: 4460937266720982994, guid: e4324f2703548f24eb2562d7b849cfed,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.75
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e4324f2703548f24eb2562d7b849cfed, type: 3}
 --- !u!4 &621230965 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2129587651359434135, guid: e4324f2703548f24eb2562d7b849cfed,
+  m_CorrespondingSourceObject: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
     type: 3}
-  m_PrefabInstance: {fileID: 621230964}
+  m_PrefabInstance: {fileID: 230050155205576292}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &622214872
 GameObject:
@@ -127239,6 +127045,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2634128103435655830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &230050155205576292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 597562632}
+    m_Modifications:
+    - target: {fileID: 2214818607766706310, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 121
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.8194
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.67984605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7333549
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -94.337
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818607766706311, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214818609485908879, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6691768086823825396}
+    - target: {fileID: 2214818609485908879, guid: e63613238bd326349bb7ebb36ba4f0e5,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6691768086823825396}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e63613238bd326349bb7ebb36ba4f0e5, type: 3}
 --- !u!23 &403278175007860313
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -128906,19 +128791,13 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2634128103435655830}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6691768086823825392 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9123219529528341588, guid: b0550f8ced5444544a791898a0382fb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2468465510255991716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6691768086823825396 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9123219529528341584, guid: b0550f8ced5444544a791898a0382fb0,
     type: 3}
   m_PrefabInstance: {fileID: 2468465510255991716}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6691768086823825392}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13d7e6df6c45338459dbbbe98a91f2a5, type: 3}

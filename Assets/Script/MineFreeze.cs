@@ -53,7 +53,7 @@ public class MineFreeze : MonoBehaviour
         }
         if (collision.gameObject)
         {
-            print("colpito");
+            //print("colpito");
             if(primoImpatto)
                 StartCoroutine("Placing");
             if (freeze)

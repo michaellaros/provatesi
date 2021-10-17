@@ -6,13 +6,59 @@ public class RotateBase : MonoBehaviour
 {
 
     public Transform rotator;
-
-    public void RotateY()
-    {
-        transform.Rotate(0, rotator.rotation.y, 0);
+    public float minRotationAngle;
+    public float maxRotationAngle;
+    public float rotationSpeed;
+    private float rotation;
+    bool canRotate;
+    void Start() {
+        canRotate = false;
     }
-    public void RotateX()
+
+
+    public void Rotate2X()
     {
-        transform.Rotate(rotator.rotation.x,0, 0);
+        if (canRotate)
+        {
+            try
+            {
+                print(transform.eulerAngles.x);
+                print(transform.eulerAngles.x + (rotation / rotationSpeed));
+                rotation = rotator.GetComponent<BNG.JoystickControl>().angleX;
+                if ((transform.eulerAngles.x + (rotation / rotationSpeed)) < maxRotationAngle &&
+                    (transform.eulerAngles.x + (rotation / rotationSpeed)) > minRotationAngle)
+                {
+                    transform.Rotate(rotation / rotationSpeed, 0, 0);
+                }
+            }
+            catch
+            {
+            }
+        }
+    }
+    public void Rotate2Y()
+    {
+        if (canRotate)
+        {
+            try
+            {
+                rotation = rotator.GetComponent<BNG.JoystickControl>().angleY;
+                if ((transform.localRotation.y + (rotation / rotationSpeed)) < maxRotationAngle &&
+                    (transform.localRotation.y + (rotation / rotationSpeed)) > minRotationAngle)
+                {
+                    transform.Rotate(0, rotation / rotationSpeed, 0);
+                }
+                
+            }
+            catch
+            {
+            }
+        }
+    }
+    public void canRotateTrue() {
+        canRotate = true;
+    }
+    public void canRotateFalse() {
+        canRotate = false;
     }
 }

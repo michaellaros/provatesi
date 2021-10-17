@@ -66,14 +66,6 @@ namespace BNG {
         public float GetInitialProjectileForce() {
             return _initialProjectileForce;
         }
-        public void RotateUp()
-        {
-            transform.Rotate(transform.rotation.x + 15f, 0, 0);
-        }
-        public void RotateDown() {
-
-            transform.Rotate(transform.rotation.x - 15f, 0, 0);
-        }
     }
 }
 

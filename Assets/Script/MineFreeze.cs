@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MineFreeze : MonoBehaviour
 {
-    public bool freeze = false;
-    public bool primoImpattoEX;
+    public bool toDetonate;
     Rigidbody rb;
     public bool primoImpatto;
     public float destroyTime;
@@ -17,8 +16,7 @@ public class MineFreeze : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         primoImpatto = true;
-        primoImpattoEX = true;
-        print("sono nato");
+        toDetonate = true;
     }
 
     // Update is called once per frame
@@ -26,44 +24,32 @@ public class MineFreeze : MonoBehaviour
     {
         
     }
-
-    public void OnCollisionStay(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Mine"))
-        {
-            
-
-            if (primoImpattoEX)
-            {
-                particle.SetActive(true);
-                primoImpattoEX = false;
-                StartCoroutine("DestroyMe");
-            }
-        }
-
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.transform.GetComponent<Enemy>().TakeDamage(mineDamage);
-
-            if (primoImpattoEX)
+            if (toDetonate)
             {
                 particle.SetActive(true);
-                primoImpattoEX = false;
+                toDetonate = false;
                 StartCoroutine("DestroyMe");
             }
         }
-        if (collision.gameObject)
+        if (collision.gameObject.CompareTag("Mine"))
         {
-            //print("colpito");
-            if(primoImpatto)
-                StartCoroutine("Placing");
-            if (freeze)
+            if (toDetonate)
             {
-                rb.constraints = RigidbodyConstraints.FreezePosition;
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                particle.SetActive(true);
+                toDetonate = false;
+                StartCoroutine("DestroyMe");
             }
         }
-        
+        if (primoImpatto)
+        {
+            print(collision.gameObject.name);
+            StartCoroutine("Placing");
+        }
     }
     IEnumerator DestroyMe()
     {
@@ -72,17 +58,10 @@ public class MineFreeze : MonoBehaviour
     }
     IEnumerator Placing()
     {
-        print("piazzato");
+        print("Atterrato");
         primoImpatto = false;
         yield return new WaitForSeconds(3);
-        freeze = true;
-            StartCoroutine("DisablePlacing");
-    }
-    IEnumerator DisablePlacing()
-    {
-        yield return new WaitForSeconds(3);
-        print("libero!");
-        freeze = false;
-        
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }

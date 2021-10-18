@@ -78,12 +78,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f3fa01107f2cb49933638367c90891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeze: 0
-  primoImpattoEX: 0
+  toDetonate: 1
   primoImpatto: 0
   destroyTime: 1.5
   particle: {fileID: 4262325890716948600}
-  mineDamage: 0
+  mineDamage: 20
 --- !u!114 &750474281385688520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694ecdf8b70136f47a1c5046e642d11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1.1
+  movementSpeed: 20
   target: {fileID: 0}
   damage: 20
 --- !u!1001 &2728221353724114599

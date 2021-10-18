@@ -42,6 +42,7 @@ public class AutoTurret : MonoBehaviour
             }else
             {
                 enemies.RemoveAt(0);
+                CheckForTarget();
             }  
         }
     }

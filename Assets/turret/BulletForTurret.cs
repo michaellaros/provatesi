@@ -6,26 +6,31 @@ public class BulletForTurret : MonoBehaviour
 {
     public float movementSpeed;
     public GameObject target;
-    public int damage;
+    private bool continueToFollow;
 
     public void Start()
     {
+        continueToFollow = true;
     }
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
-        FollowTarget();
+        if (continueToFollow)
+        {
+            if (target != null)
+            {
+                FollowTarget();
+                transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
+            }
+            else {
+                continueToFollow = false;
+            }
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collider other)
     {
-        if (other.tag == "Enemy")
-        {
-            target = other.gameObject;
-            target.GetComponent<Enemy>().TakeDamage(damage);
-        }
-        Destroy(this.gameObject);
+        continueToFollow = false;
     }
     //script per seguire il nemico
     public void FollowTarget()

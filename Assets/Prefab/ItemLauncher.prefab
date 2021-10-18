@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4802490967735879988}
   - component: {fileID: 4802490967735879989}
   - component: {fileID: 4802490967735879994}
+  - component: {fileID: 4558553921843500363}
   m_Layer: 0
   m_Name: ItemLauncher
   m_TagString: Untagged
@@ -62,9 +63,25 @@ MonoBehaviour:
   ProjectileForce: 20
   LaunchSound: {fileID: 8300000, guid: 5b096d3829195954e959ce0ec63ca481, type: 3}
   LaunchParticles: {fileID: 0}
-  hinge: {fileID: 0}
-  reloadTime: 0
+  reloadTime: 2
   MuzzleTransform: {fileID: 4802490968306308406}
+--- !u!114 &4558553921843500363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4802490967735879991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71f5304f0b0b9b4092fce3d34560479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotator: {fileID: 0}
+  minRotationAngle: 0.2444076
+  maxRotationAngle: 0.5666502
+  rotationSpeed: 40
+  canRotate: 0
 --- !u!1 &4802490968171723795
 GameObject:
   m_ObjectHideFlags: 0

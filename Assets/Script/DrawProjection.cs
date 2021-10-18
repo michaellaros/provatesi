@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DrawProjection : MonoBehaviour
 {
-    public Transform shootPoint;
-    public float blastPower;
+    public GameObject cannon;
+    private Transform shootPoint;
+    private float blastPower;
     LineRenderer lineRenderer;
 
     // Number of points on the line
@@ -19,6 +20,9 @@ public class DrawProjection : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        shootPoint = cannon.GetComponent<BNG.ProjectileLauncher>().MuzzleTransform;
+        blastPower = cannon.GetComponent<BNG.ProjectileLauncher>().ProjectileForce;
+
     }
 
 

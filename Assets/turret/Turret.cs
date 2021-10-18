@@ -31,11 +31,7 @@ public class Turret : MonoBehaviour
     }
     void FixedUpdate()
     {
-         
-        if (enemies.Count > 0)
-        {
-            TryToShoot();
-        }
+        
     }
     public void TryToShoot() {
         try
@@ -46,14 +42,13 @@ public class Turret : MonoBehaviour
             if (autoFire && shootReady)
             {
                 shootReady = false;
-                projectileLauncherOBJ.GetComponent<BNG.ProjectileLauncher>().AutoShootProjectile(target);
                 
                 Invoke("FireRate", reloadTime);
             }
         }
         catch(Exception ex)
         {
-            print(ex);
+            Debug.Log(ex);
             if (enemies.Count > 0)
             {
                 enemies.RemoveAt(0);

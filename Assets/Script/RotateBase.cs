@@ -9,12 +9,34 @@ public class RotateBase : MonoBehaviour
     public float minRotationAngle;
     public float maxRotationAngle;
     public float rotationSpeed;
+    [Space(20)]
+    public Quaternion CurrentRotationDebug;
     private float rotation;
     bool canRotate;
+    bool rotateX;
+    bool rotateY;
     void Start() {
         canRotate = false;
     }
 
+    private void Update()
+    {
+        CurrentRotationDebug = transform.localRotation;
+        if (canRotate)
+        {
+           if(rotateX && (transform.eulerAngles.x + (rotation / rotationSpeed)) < maxRotationAngle &&
+                    (transform.eulerAngles.x + (rotation / rotationSpeed)) > minRotationAngle)
+            {
+                transform.Rotate(rotation / rotationSpeed, 0, 0);
+            }
+            if (rotateY && (transform.eulerAngles.y + (rotation / rotationSpeed)) < maxRotationAngle &&
+                    (transform.eulerAngles.y + (rotation / rotationSpeed)) > minRotationAngle)
+            {
+                transform.Rotate(0, rotation / rotationSpeed, 0);
+            }
+        }
+
+    }
 
     public void Rotate2X()
     {

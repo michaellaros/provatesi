@@ -27,20 +27,20 @@ public class Objective : MonoBehaviour
             CallGameOver();
         }
 
-        if (health % 10 == 0)
+        if (health % 10 == 0 && eliminated < archers.Length)
         {
             Destroy(archers[eliminated]);
             eliminated += 1;
         }
         
-        //Inserire codice update UI vita Castello
+        
     }
     
     private void CallGameOver()
     {
         Time.timeScale = 0;
         print("game over");
-        //TODO Gameover
+        
     }
 
 }

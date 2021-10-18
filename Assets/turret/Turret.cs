@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Turret : MonoBehaviour
 {
@@ -40,7 +41,8 @@ public class Turret : MonoBehaviour
         try
         {
             turretTopPart.transform.LookAt(target.transform);
-            
+            turretTopPart.transform.Rotate(0, 90, 0);
+
             if (autoFire && shootReady)
             {
                 shootReady = false;
@@ -49,8 +51,9 @@ public class Turret : MonoBehaviour
                 Invoke("FireRate", reloadTime);
             }
         }
-        catch
+        catch(Exception ex)
         {
+            print(ex);
             if (enemies.Count > 0)
             {
                 enemies.RemoveAt(0);

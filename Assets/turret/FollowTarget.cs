@@ -6,7 +6,7 @@ public class FollowTarget : MonoBehaviour
 {
     public float movementSpeed;
     public GameObject target;
-    private float delayAimbot;
+    public float delayAimbot;
     private bool continueToFollow;
 
     public void Start()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TriggerParent : MonoBehaviour
 {
     public GameObject[] enableOnTrigger;
+    public GameObject[] disableOnTrigger;
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -27,12 +28,20 @@ public class TriggerParent : MonoBehaviour
         {
             obj.SetActive(false);
         }
+        foreach (GameObject obj in disableOnTrigger)
+        {
+            obj.SetActive(true);
+        }
     }
     public void EnableList()
     {
         foreach (GameObject obj in enableOnTrigger)
         {
             obj.SetActive(true);
+        }
+        foreach (GameObject obj in disableOnTrigger)
+        {
+            obj.SetActive(false);
         }
     }
 }

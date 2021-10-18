@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AutoTurret : MonoBehaviour
 {
+    public GameObject cannon;
     //proiettile
     [SerializeField]
     private GameObject bullet;
@@ -15,7 +16,7 @@ public class AutoTurret : MonoBehaviour
     [SerializeField]
     private GameObject turretBody;
     //canna di fuoco della torretta
-    public GameObject bulletSpawnpoint;
+    private GameObject bulletSpawnpoint;
     //tempo di ricarica torretta
     public float reloadTime;
     //booleano se la torretta è carica o meno
@@ -24,13 +25,22 @@ public class AutoTurret : MonoBehaviour
     public bool autoFire;
     //lista dei nemici
     public List<GameObject> enemies;
+    private float blastPower;
+    private Transform cannonStart;
     
 
     void Start()
     {
-        
+        bulletSpawnpoint = cannon.GetComponent<BNG.ProjectileLauncher>().MuzzleTransform.gameObject;
+        blastPower = cannon.GetComponent<BNG.ProjectileLauncher>().ProjectileForce;
+        cannonStart = cannon.transform;
     }
+    private void OnEnable()
+    {
+        cannon.transform.position = cannonStart.position;
+        cannon.transform.rotation = cannonStart.rotation;
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +60,8 @@ public class AutoTurret : MonoBehaviour
     {
         shootReady = false;
         instanceBullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, bulletSpawnpoint.transform.rotation);
-        instanceBullet.GetComponent<BulletForTurret>().target = target;
+        instanceBullet.GetComponent<FollowTarget>().target = target;
+        instanceBullet.GetComponent<Rigidbody>().AddForce(bulletSpawnpoint.transform.forward * blastPower, ForceMode.VelocityChange);
         Invoke("FireRate", reloadTime);
     }
     void FireRate()

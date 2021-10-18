@@ -87,7 +87,7 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         Transform _bullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, Quaternion.identity);
-        _bullet.GetComponent<BulletForTurret>().target = target;
+        _bullet.GetComponent<FollowTarget>().target = target;
         _bullet.transform.rotation = bulletSpawnpoint.transform.rotation;
         shootReady = false;
         Invoke("FireRate", reloadTime);

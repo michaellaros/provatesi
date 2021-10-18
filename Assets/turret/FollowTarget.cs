@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletForTurret : MonoBehaviour
+public class FollowTarget : MonoBehaviour
 {
     public float movementSpeed;
     public GameObject target;
+    private float delayAimbot;
     private bool continueToFollow;
 
     public void Start()
     {
-        continueToFollow = true;
+        Invoke("AimNow", delayAimbot);
     }
     // Update is called once per frame
     void Update()
@@ -19,7 +20,7 @@ public class BulletForTurret : MonoBehaviour
         {
             if (target != null)
             {
-                FollowTarget();
+                Follow();
                 transform.Translate(Vector3.forward * Time.deltaTime * movementSpeed);
             }
             else {
@@ -27,13 +28,15 @@ public class BulletForTurret : MonoBehaviour
             }
         }
     }
-
-    public void OnCollisionEnter(Collider other)
+    void AimNow() {
+        continueToFollow = true;
+    }
+    public void OnCollisionEnter(Collision collider)
     {
         continueToFollow = false;
     }
     //script per seguire il nemico
-    public void FollowTarget()
+    public void Follow()
     {
         Vector3 directionToTarget = target.transform.position - transform.position;
         Vector3 currentDirection = transform.forward;

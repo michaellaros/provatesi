@@ -90,7 +90,7 @@ namespace BNG {
         public void AutoShootProjectile(GameObject target)
         {
             _bullet = AutoShootProjectile(ProjectileForce);
-            _bullet.GetComponent<BulletForTurret>().target = target;
+            _bullet.GetComponent<FollowTarget>().target = target;
         }
 
         public void SetForce(float force) {

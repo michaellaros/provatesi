@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8034479553483746674}
   - component: {fileID: 6207234159014486884}
   - component: {fileID: 746587625441372331}
-  - component: {fileID: 750474281385688520}
+  - component: {fileID: 5106338647967614776}
   m_Layer: 0
   m_Name: AimbotMine
   m_TagString: Mine
@@ -83,7 +83,7 @@ MonoBehaviour:
   destroyTime: 1.5
   particle: {fileID: 4262325890716948600}
   mineDamage: 20
---- !u!114 &750474281385688520
+--- !u!114 &5106338647967614776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 20
   target: {fileID: 0}
-  damage: 20
 --- !u!1001 &2728221353724114599
 PrefabInstance:
   m_ObjectHideFlags: 0

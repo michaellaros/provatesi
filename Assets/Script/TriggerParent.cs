@@ -8,13 +8,13 @@ public class TriggerParent : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            collider.transform.SetParent(transform);
+            collider.transform.parent.parent.SetParent(transform);
         }
     }
     private void OnTriggerExit(Collider collider) {
         if (collider.CompareTag("Player"))
         {
-            collider.transform.SetParent(null);
+            collider.transform.parent.parent.SetParent(null);
         }
     }
 }

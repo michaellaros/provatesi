@@ -16,7 +16,7 @@ namespace BNG {
         public AudioClip LaunchSound;
 
         public ParticleSystem LaunchParticles;
-        public Transform hinge;
+            
         private bool fireReady;
         public float reloadTime;
         private GameObject _bullet;
@@ -28,7 +28,7 @@ namespace BNG {
         public Transform MuzzleTransform;
 
         private float _initialProjectileForce;
-
+        
         // Start is called before the first frame update
         void Start() {
             // Setup initial velocity for launcher so we can modify it later
@@ -41,23 +41,15 @@ namespace BNG {
         /// </summary>
         /// <returns>The object that was shot</returns>
         public GameObject ShootProjectile(float projectileForce) {
-            
             if (MuzzleTransform && ProjectileObject) {
                 GameObject launched = Instantiate(ProjectileObject, MuzzleTransform.transform.position, MuzzleTransform.transform.rotation) as GameObject;
-                launched.transform.position = MuzzleTransform.transform.position;
-                launched.transform.rotation = MuzzleTransform.transform.rotation;
-
                 launched.GetComponentInChildren<Rigidbody>().AddForce(MuzzleTransform.forward * projectileForce, ForceMode.VelocityChange);
-
                 VRUtils.Instance.PlaySpatialClipAt(LaunchSound, launched.transform.position, 1f);
-
                 if(LaunchParticles) {
                     LaunchParticles.Play();
                 }
-
                 return launched;
             }
-
             return null;
         }
 
@@ -67,8 +59,6 @@ namespace BNG {
                 fireReady = false;
                 ShootProjectile(ProjectileForce);
                 Invoke("FireReadyTrue", reloadTime);
-                
-
             }
         }
 
@@ -96,16 +86,11 @@ namespace BNG {
             return null;
 
         }
-            public void AutoShootProjectile(GameObject target)
+
+        public void AutoShootProjectile(GameObject target)
         {
-
-            
             _bullet = AutoShootProjectile(ProjectileForce);
-            
             _bullet.GetComponent<BulletForTurret>().target = target;
-            
-            
-
         }
 
         public void SetForce(float force) {
@@ -115,6 +100,7 @@ namespace BNG {
         public float GetInitialProjectileForce() {
             return _initialProjectileForce;
         }
+
         public void FireReadyTrue() {
             fireReady = true;
         }

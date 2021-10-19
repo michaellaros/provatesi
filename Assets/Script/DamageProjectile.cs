@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageProjectile : MonoBehaviour
 {
     public float damage;
-
+    public float destroyTime;
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))

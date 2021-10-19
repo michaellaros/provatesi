@@ -47,7 +47,6 @@ public class MineFreeze : MonoBehaviour
         }
         if (primoImpatto)
         {
-            print(collision.gameObject.name);
             StartCoroutine("Placing");
         }
     }
@@ -58,7 +57,6 @@ public class MineFreeze : MonoBehaviour
     }
     IEnumerator Placing()
     {
-        print("Atterrato");
         primoImpatto = false;
         yield return new WaitForSeconds(3);
         rb.constraints = RigidbodyConstraints.FreezePosition;

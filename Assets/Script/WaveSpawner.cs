@@ -107,7 +107,7 @@ public class WaveSpawner : MonoBehaviour {
 
 	IEnumerator SpawnWave(Wave _wave)
 	{
-		Debug.Log("Spawning Wave: " + _wave.name);
+		//Debug.Log("Spawning Wave: " + _wave.name);
 		roundName.SetText(_wave.name);
 		state = SpawnState.SPAWNING;
 

@@ -12,6 +12,7 @@ public class IceGame2 : MonoBehaviour
     public int iceBoost = 0;
     public int cooldownIce = 10;
     public int minigametime = 5;
+    public float buff = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -73,15 +74,20 @@ public class IceGame2 : MonoBehaviour
     public void Iceboostlenght()
     {
         if (iceBoost >= 13 && iceBoost < 41)
-
+        {
+            GameEvents.singleton.IceBoost(buff);
             Debug.Log(" hai 5 secondi");
+        }
         if (iceBoost >= 41 && iceBoost < 61)
-
+        {
+            GameEvents.singleton.IceBoost(buff * 2);
             Debug.Log(" hai 10 secondi");
+        }
         if (iceBoost >= 61)
-
+        {
+            GameEvents.singleton.IceBoost(buff * 3);
             Debug.Log(" hai 15 secondi");
-
+        }
         iceBoost = 0;
     }
 }

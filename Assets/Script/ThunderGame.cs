@@ -22,7 +22,7 @@ public class ThunderGame : MonoBehaviour
     public int minigametime = 5;
     private GameObject tesla;
     private GameObject thunderZap;
-    public float buff;
+    public float buff = 5;
     
 
     // Start is called before the first frame update

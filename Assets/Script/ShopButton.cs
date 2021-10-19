@@ -16,23 +16,26 @@ public class ShopButton : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (spawned)
-        {
-            
-            GetComponent<Button>().interactable = false;
-        }
-        if (!spawned)
-        {
-            
-            GetComponent<Button>().interactable = true;
-        }
-    }
+    
 
     public void ButtonController()
     {
         spawned = true;
         Instantiate(tower, spawnPoint.transform.position, Quaternion.identity);
+        GameEvents.singleton.SpawnTower();
+        CheckForSpawn();
+    }
+    public void CheckForSpawn()
+    {
+        if (spawned)
+        {
+
+            GetComponent<Button>().interactable = false;
+        }
+        if (!spawned)
+        {
+
+            GetComponent<Button>().interactable = true;
+        }
     }
 }

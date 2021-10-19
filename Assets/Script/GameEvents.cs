@@ -23,4 +23,39 @@ public class GameEvents : MonoBehaviour
             triggerHealPlayer();
         }
     }
+
+    public event Action triggerSpawnTower;
+    public void SpawnTower()
+    {
+        if (triggerSpawnTower != null)
+        {
+            triggerSpawnTower();
+        }
+    }
+    public event Action <float> triggerIceBoost;
+    public void IceBoost(float seconds)
+    {
+        if (triggerIceBoost != null)
+        {
+            triggerIceBoost(seconds);
+        }
+    }
+
+    public event Action<float> triggerFireBoost;
+    public void FireBoost(float seconds)
+    {
+        if (triggerFireBoost != null)
+        {
+            triggerFireBoost(seconds);
+        }
+    }
+
+    public event Action<float> triggerThunderBoost;
+    public void ThunderBoost(float seconds)
+    {
+        if (triggerThunderBoost != null)
+        {
+            triggerThunderBoost(seconds);
+        }
+    }
 }

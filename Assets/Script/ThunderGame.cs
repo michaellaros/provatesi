@@ -22,6 +22,7 @@ public class ThunderGame : MonoBehaviour
     public int minigametime = 5;
     private GameObject tesla;
     private GameObject thunderZap;
+    public float buff;
     
 
     // Start is called before the first frame update
@@ -107,15 +108,20 @@ public class ThunderGame : MonoBehaviour
         thunderBoost = tesla.GetComponent<Tesla_behaviour>().boost;
 
         if (thunderBoost < 10 && thunderBoost < 20)
-
+        {
+            GameEvents.singleton.ThunderBoost(buff);
             Debug.Log(" hai 5 secondi");
+        }
         if (thunderBoost >= 20 && thunderBoost < 37)
-
+        {
+            GameEvents.singleton.ThunderBoost(buff * 2);
             Debug.Log(" hai 10 secondi");
+        }
         if (thunderBoost >= 37)
-
+        {
+            GameEvents.singleton.ThunderBoost(buff * 3);
             Debug.Log(" hai 15 secondi");
-
+        }
         thunderBoost = 0;
     }
 }

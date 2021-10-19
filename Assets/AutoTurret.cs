@@ -37,8 +37,11 @@ public class AutoTurret : MonoBehaviour
     }
     private void OnEnable()
     {
-        cannon.transform.position = cannonStart.position;
-        cannon.transform.rotation = cannonStart.rotation;
+        if (cannonStart != null)
+        {
+            cannon.transform.position = cannonStart.position;
+            cannon.transform.rotation = cannonStart.rotation;
+        }
 
     }
     // Update is called once per frame
@@ -62,10 +65,11 @@ public class AutoTurret : MonoBehaviour
         instanceBullet = Instantiate(bullet.transform, bulletSpawnpoint.transform.position, bulletSpawnpoint.transform.rotation);
         instanceBullet.GetComponent<FollowTarget>().target = target;
         instanceBullet.GetComponent<Rigidbody>().AddForce(bulletSpawnpoint.transform.forward * blastPower, ForceMode.VelocityChange);
-        Invoke("FireRate", reloadTime);
+        StartCoroutine("FireRate");
     }
-    void FireRate()
+    IEnumerator FireRate()
     {
+        yield return new WaitForSeconds(reloadTime);
         shootReady = true;
     }
     private void OnTriggerEnter(Collider other)

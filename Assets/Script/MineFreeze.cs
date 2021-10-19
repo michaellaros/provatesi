@@ -19,23 +19,9 @@ public class MineFreeze : MonoBehaviour
         toDetonate = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.transform.GetComponent<Enemy>().TakeDamage(mineDamage);
-            if (toDetonate)
-            {
-                particle.SetActive(true);
-                toDetonate = false;
-                StartCoroutine("DestroyMe");
-            }
-        }
+        
         if (collision.gameObject.CompareTag("Mine"))
         {
             if (toDetonate)

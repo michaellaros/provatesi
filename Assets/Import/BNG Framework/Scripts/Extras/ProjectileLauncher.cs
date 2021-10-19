@@ -9,7 +9,6 @@ namespace BNG {
         /// Launch this from the 
         /// </summary>
         public GameObject ProjectileObject;
-        public GameObject ProjectileAuto;
 
         public float ProjectileForce = 15f;
 
@@ -19,7 +18,6 @@ namespace BNG {
             
         private bool fireReady;
         public float reloadTime;
-        private GameObject _bullet;
         
 
         /// <summary>
@@ -58,39 +56,8 @@ namespace BNG {
             {
                 fireReady = false;
                 ShootProjectile(ProjectileForce);
-                Invoke("FireReadyTrue", reloadTime);
+                StartCoroutine("FireReadyTrue");
             }
-        }
-
-        public GameObject AutoShootProjectile(float projectileForce)
-        {
-
-            if (MuzzleTransform && ProjectileAuto)
-            {
-                GameObject launched = Instantiate(ProjectileAuto, MuzzleTransform.transform.position, MuzzleTransform.transform.rotation) as GameObject;
-                launched.transform.position = MuzzleTransform.transform.position;
-                launched.transform.rotation = MuzzleTransform.transform.rotation;
-
-                launched.GetComponentInChildren<Rigidbody>().AddForce(MuzzleTransform.forward * projectileForce, ForceMode.VelocityChange);
-
-                VRUtils.Instance.PlaySpatialClipAt(LaunchSound, launched.transform.position, 1f);
-
-                if (LaunchParticles)
-                {
-                    LaunchParticles.Play();
-                }
-
-                return launched;
-            }
-
-            return null;
-
-        }
-
-        public void AutoShootProjectile(GameObject target)
-        {
-            _bullet = AutoShootProjectile(ProjectileForce);
-            _bullet.GetComponent<FollowTarget>().target = target;
         }
 
         public void SetForce(float force) {
@@ -101,7 +68,8 @@ namespace BNG {
             return _initialProjectileForce;
         }
 
-        public void FireReadyTrue() {
+        IEnumerator FireReadyTrue() {
+            yield return new WaitForSeconds(reloadTime);
             fireReady = true;
         }
     }

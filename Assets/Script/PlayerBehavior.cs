@@ -33,8 +33,8 @@ public class PlayerBehavior : MonoBehaviour
             isInvincible = true;
             isHealing = false;
             health -= 20f;
-            Invoke("isInvincibleFalse", invincibleTime);
-            Invoke("isHealingTrue", invincibleTime);
+            StartCoroutine("isInvincibleFalse");
+            StartCoroutine("isHealingTrue");
             if (health < 1)
             {
                 //gameOverRoutine();
@@ -56,12 +56,14 @@ public class PlayerBehavior : MonoBehaviour
         spawnManager.SetActive(false);
         gameOverEvent.Invoke();
     }
-    public void isInvincibleFalse()
+    IEnumerator isInvincibleFalse()
     {
+        yield return new WaitForSeconds (invincibleTime);
         isInvincible = false;
     }
-    public void isHealingTrue()
+    IEnumerator isHealingTrue()
     {
+        yield return new WaitForSeconds(invincibleTime);
         isInvincible = true;
     }
 
@@ -83,4 +85,5 @@ public class PlayerBehavior : MonoBehaviour
 
         GameEvents.singleton.triggerHealPlayer -= MageHeal;
     }
+    
 }

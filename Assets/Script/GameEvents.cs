@@ -67,4 +67,22 @@ public class GameEvents : MonoBehaviour
             triggerdoorBroken(id);
         }
     }
+
+    public event Action<int> triggerCharacterDisappear;
+    public void CharacterDisappear(int archers)
+    {
+        if (triggerCharacterDisappear != null)
+        {
+            triggerCharacterDisappear(archers);
+        }
+    }
+
+    public event Action <GameObject> enemySpawn;
+    public void EnemySpawn(GameObject enemy)
+    {
+        if (enemySpawn != null)
+        {
+            enemySpawn(enemy);
+        }
+    }
 }

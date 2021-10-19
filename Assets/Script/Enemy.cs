@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < dropNumber; i++)
         {
             var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length)], transform.position, transform.rotation);
-            drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 500);
+            drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 3);
         }
     }
 
@@ -147,14 +147,9 @@ public class Enemy : MonoBehaviour
         }
         if (other.CompareTag("Objective"))
         {
-
                 obstacleFound = other.transform.gameObject;
                 obstacleFound.GetComponent<Objective>().TakeDamage(objectiveDamage);
                 Die(false);
-            
-            
-
-            
         }
     }
     public void OnTriggerExit(Collider other)

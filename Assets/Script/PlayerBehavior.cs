@@ -11,6 +11,7 @@ public class PlayerBehavior : MonoBehaviour
     public float invincibleTime;
     public float dealyHealingTime;
     public UnityEvent gameOverEvent;
+    public UnityEvent materialCollected;
     public GameObject spawnManager;
     public GameObject gun;
     private void OnEnable()
@@ -43,7 +44,6 @@ public class PlayerBehavior : MonoBehaviour
         if (coll.collider.CompareTag("Material"))
         {
             //TODO aggiungere materiali al mago
-            
         }
 
     }

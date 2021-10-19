@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694ecdf8b70136f47a1c5046e642d11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 60
+  movementSpeed: 100
   target: {fileID: 0}
   delayAimbot: 0.1
 --- !u!1001 &2728221353724114599

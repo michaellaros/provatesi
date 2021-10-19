@@ -10,9 +10,10 @@ public class MaterialScript : MonoBehaviour
 
     }
     public void OnCollisionEnter(Collision coll) {
-        print(coll.gameObject.name);
+
         if (coll.gameObject.CompareTag("Player")) {
             GameEvents.singleton.GemCollected(gemType);
+
             Destroy(gameObject);
         }
         

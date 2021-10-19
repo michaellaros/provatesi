@@ -1711,6 +1711,7 @@ GameObject:
   - component: {fileID: 788403267267814778}
   - component: {fileID: 6775515986845858565}
   - component: {fileID: 5239052529071348206}
+  - component: {fileID: 6479449162656938780}
   m_Layer: 10
   m_Name: AimbotArrow
   m_TagString: Untagged
@@ -1908,6 +1909,20 @@ MonoBehaviour:
   movementSpeed: 60
   target: {fileID: 0}
   delayAimbot: 0.1
+--- !u!114 &6479449162656938780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788403267267814777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3b559543e2e0440bb915c9773b86ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  destroyTime: 8
 --- !u!1 &788403267355979243
 GameObject:
   m_ObjectHideFlags: 0

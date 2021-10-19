@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private Transform[] WaypointArray;
     private int currentWaypoint;
     private Transform nextWaypoint;
+    [SerializeField]
     private Transform target;    
     private GameObject _player;
 

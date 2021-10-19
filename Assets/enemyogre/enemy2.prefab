@@ -157,7 +157,7 @@ MonoBehaviour:
   spawnPointProjectile: {fileID: 5199931129018053680}
   stoppingDistance: 5
   health: 10
-  minDistanceForNextWaypoint: 6
+  minDistanceForNextWaypoint: 8
   minDistancePlayerChase: 20
   maxDistancePlayerChase: 35
   dopppedItem:

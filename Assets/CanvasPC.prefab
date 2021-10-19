@@ -453,6 +453,7 @@ MonoBehaviour:
   - {fileID: 4987891592509338851}
   fireboost: 0
   firecomponent: {fileID: 2780738325542993171}
+  buff: 5
 --- !u!1 &2780738325193099987
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2780738325357163125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -812,6 +813,7 @@ MonoBehaviour:
   thunderBoost: 0
   cooldownThunder: 10
   minigametime: 5
+  buff: 5
 --- !u!1 &2780738325509563447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2021,7 @@ MonoBehaviour:
   iceBoost: 0
   cooldownIce: 10
   minigametime: 5
+  buff: 5
 --- !u!1 &2780738326713301594
 GameObject:
   m_ObjectHideFlags: 0

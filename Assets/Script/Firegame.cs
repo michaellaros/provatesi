@@ -14,13 +14,13 @@ public class Firegame : MonoBehaviour
     public GameObject firecomponent;
     private bool fire;
     private Button thisButton;
-
+    public float buff = 5;
      public void Start()
     {
         thisButton = GetComponent<Button>();
     }
     //gestisce la comparsa del minigioco e della ui del buff
-     public void Update()
+     public void CheckForFire()
     {
         
             
@@ -46,6 +46,7 @@ public class Firegame : MonoBehaviour
     {
         buttonManager.GetComponent<buttonManager>().Manager = true;
         fire = true;
+        CheckForFire();
         StartCoroutine(Firereset());
         
     }
@@ -56,6 +57,7 @@ public class Firegame : MonoBehaviour
         Fireboostlenght();
         buttonManager.GetComponent<buttonManager>().Manager = false;
         fire = false;
+        CheckForFire();
         thisButton.interactable = false;
 
         StartCoroutine(Buttoncooldown());
@@ -72,14 +74,20 @@ public class Firegame : MonoBehaviour
     public void Fireboostlenght()
     {
         if (fireboost >= 6 && fireboost < 12)
-            
+        {
+            GameEvents.singleton.FireBoost(buff);
             Debug.Log(" hai 5 secondi");
+        }
         if (fireboost >=12 && fireboost < 18)
-            
-        Debug.Log(" hai 10 secondi");
+        {
+            GameEvents.singleton.FireBoost(buff * 2);
+            Debug.Log(" hai 10 secondi");
+        }
         if (fireboost >= 18)
-            
-        Debug.Log(" hai 15 secondi");
+        {
+            GameEvents.singleton.FireBoost(buff * 3);
+            Debug.Log(" hai 15 secondi");
+        }
 
         fireboost = 0;
     }

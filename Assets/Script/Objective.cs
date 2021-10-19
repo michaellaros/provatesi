@@ -30,7 +30,9 @@ public class Objective : MonoBehaviour
         if (health % 10 == 0 && eliminated < archers.Length)
         {
             Destroy(archers[eliminated]);
+            GameEvents.singleton.CharacterDisappear(eliminated);
             eliminated += 1;
+            
         }
         
         

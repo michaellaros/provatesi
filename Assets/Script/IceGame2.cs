@@ -12,6 +12,7 @@ public class IceGame2 : MonoBehaviour
     public int iceBoost = 0;
     public int cooldownIce = 10;
     public int minigametime = 5;
+    public float buff = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,11 @@ public class IceGame2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+     public void CheckForIce()
     
-        {
+     {
 
-        Debug.Log(iceBoost);
+        
         if (ice)
             {
                 GetComponent<Image>().enabled = false;
@@ -32,16 +33,15 @@ public class IceGame2 : MonoBehaviour
                 iceComponent.SetActive(true);
             }
 
-            if (!ice)
+        if (!ice)
             {
                 GetComponent<Image>().enabled = true;
                 thisButton.enabled = true;
                 iceComponent.SetActive(false);
-
             }
 
 
-        }
+     }
 
 
     public void Icepower()
@@ -49,6 +49,7 @@ public class IceGame2 : MonoBehaviour
         buttonManager.GetComponent<buttonManager>().Manager = true;
         buttonManager.GetComponent<buttonManager>().Manager = false;
         ice = true;
+        CheckForIce();
         StartCoroutine(Icereset());
 
     }
@@ -58,6 +59,7 @@ public class IceGame2 : MonoBehaviour
         yield return new WaitForSeconds(10);
         Iceboostlenght();
         ice = false;
+        CheckForIce();
         buttonManager.GetComponent<buttonManager>().Manager = false;
         thisButton.interactable = false;
 
@@ -73,15 +75,20 @@ public class IceGame2 : MonoBehaviour
     public void Iceboostlenght()
     {
         if (iceBoost >= 13 && iceBoost < 41)
-
+        {
+            GameEvents.singleton.IceBoost(buff);
             Debug.Log(" hai 5 secondi");
+        }
         if (iceBoost >= 41 && iceBoost < 61)
-
+        {
+            GameEvents.singleton.IceBoost(buff * 2);
             Debug.Log(" hai 10 secondi");
+        }
         if (iceBoost >= 61)
-
+        {
+            GameEvents.singleton.IceBoost(buff * 3);
             Debug.Log(" hai 15 secondi");
-
+        }
         iceBoost = 0;
     }
 }

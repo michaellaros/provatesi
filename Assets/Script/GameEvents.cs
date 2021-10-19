@@ -58,4 +58,13 @@ public class GameEvents : MonoBehaviour
             triggerThunderBoost(seconds);
         }
     }
+
+    public event Action<int> triggerdoorBroken;
+    public void DoorBroken(int id)
+    {
+        if (triggerdoorBroken != null)
+        {
+            triggerdoorBroken(id);
+        }
+    }
 }

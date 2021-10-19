@@ -8,7 +8,7 @@ public class Door : MonoBehaviour
     private bool dead;
     public Transform DoorLeft;
     public Transform DoorRight;
-
+    public int id;
     public void Start()
     {
         dead = false;
@@ -26,6 +26,7 @@ public class Door : MonoBehaviour
         DoorLeft.transform.Rotate(0, -90, 0);
         DoorRight.transform.Rotate(0, 90, 0);
         Invoke("DisableCollider", 0.1f);
+        GameEvents.singleton.DoorBroken(id);
     }
     private void DisableCollider() {
         GetComponent<BoxCollider>().enabled = false;

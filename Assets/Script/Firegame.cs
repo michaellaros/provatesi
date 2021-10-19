@@ -20,7 +20,7 @@ public class Firegame : MonoBehaviour
         thisButton = GetComponent<Button>();
     }
     //gestisce la comparsa del minigioco e della ui del buff
-     public void Update()
+     public void CheckForFire()
     {
         
             
@@ -46,6 +46,7 @@ public class Firegame : MonoBehaviour
     {
         buttonManager.GetComponent<buttonManager>().Manager = true;
         fire = true;
+        CheckForFire();
         StartCoroutine(Firereset());
         
     }
@@ -56,6 +57,7 @@ public class Firegame : MonoBehaviour
         Fireboostlenght();
         buttonManager.GetComponent<buttonManager>().Manager = false;
         fire = false;
+        CheckForFire();
         thisButton.interactable = false;
 
         StartCoroutine(Buttoncooldown());

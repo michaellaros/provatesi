@@ -7,9 +7,6 @@ public class ThunderGame : MonoBehaviour
 {
     public GameObject father;
     public GameObject buttonManager;
-    private float spawnLimitXLeft = -891;
-    private float spawnLimitXRight = 950;
-    private float spawnPosY = 630;
     private bool startSpawn;
     public GameObject[] thunderPrefabs;
     public Transform parent;
@@ -32,7 +29,7 @@ public class ThunderGame : MonoBehaviour
         thisButton = GetComponent<Button>();
     }
     // Update is called once per frame
-    void Update()
+    public void CheckForThunder()
     {
         if (thunder)
         {
@@ -65,6 +62,7 @@ public class ThunderGame : MonoBehaviour
     {
         buttonManager.GetComponent<buttonManager>().Manager = true;
         thunder = true;
+        CheckForThunder();
         StartCoroutine(Thunderreset());
         startSpawn = true;
         tesla = Instantiate(thunderComponent, thunderComponent.transform.position, thunderComponent.transform.rotation);
@@ -82,6 +80,7 @@ public class ThunderGame : MonoBehaviour
         Thunderboostlenght();
         buttonManager.GetComponent<buttonManager>().Manager = false;
         thunder = false;
+        CheckForThunder();
         thisButton.interactable = false;
         
         Destroy(tesla);

@@ -21,11 +21,11 @@ public class IceGame2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+     public void CheckForIce()
     
-        {
+     {
 
-        Debug.Log(iceBoost);
+        
         if (ice)
             {
                 GetComponent<Image>().enabled = false;
@@ -33,16 +33,15 @@ public class IceGame2 : MonoBehaviour
                 iceComponent.SetActive(true);
             }
 
-            if (!ice)
+        if (!ice)
             {
                 GetComponent<Image>().enabled = true;
                 thisButton.enabled = true;
                 iceComponent.SetActive(false);
-
             }
 
 
-        }
+     }
 
 
     public void Icepower()
@@ -50,6 +49,7 @@ public class IceGame2 : MonoBehaviour
         buttonManager.GetComponent<buttonManager>().Manager = true;
         buttonManager.GetComponent<buttonManager>().Manager = false;
         ice = true;
+        CheckForIce();
         StartCoroutine(Icereset());
 
     }
@@ -59,6 +59,7 @@ public class IceGame2 : MonoBehaviour
         yield return new WaitForSeconds(10);
         Iceboostlenght();
         ice = false;
+        CheckForIce();
         buttonManager.GetComponent<buttonManager>().Manager = false;
         thisButton.interactable = false;
 

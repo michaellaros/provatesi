@@ -11,7 +11,6 @@ public class PlayerBehavior : MonoBehaviour
     public float invincibleTime;
     public float dealyHealingTime;
     public UnityEvent gameOverEvent;
-    public UnityEvent materialCollected;
     public GameObject spawnManager;
     public GameObject gun;
     private void OnEnable()
@@ -21,7 +20,10 @@ public class PlayerBehavior : MonoBehaviour
         isHealing = true;
         StartCoroutine("Heal");
     }
-
+    public void Start()
+    {
+        GameEvents.singleton.triggerHealPlayer += MageHeal;
+    }
     public void Update()
     {
     }
@@ -73,5 +75,12 @@ public class PlayerBehavior : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
         }
+    }
+    public void MageHeal() {
+        health += 200f;
+    }
+    private void OnDestroy() {
+
+        GameEvents.singleton.triggerHealPlayer -= MageHeal;
     }
 }

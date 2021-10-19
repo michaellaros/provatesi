@@ -43,12 +43,14 @@ public class InventoryManager : MonoBehaviour
                 redGem += 1;
                 break;
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    private void OnDestroy() {
+        GameEvents.singleton.onGemCollected -= GemCollected;
     }
 }

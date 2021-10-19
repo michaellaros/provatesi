@@ -17,4 +17,10 @@ public class GameEvents : MonoBehaviour
             onGemCollected(gemType);
         }
     }
+    public event Action triggerHealPlayer;
+    public void HealPlayer() {
+        if (triggerHealPlayer != null) {
+            triggerHealPlayer();
+        }
+    }
 }

@@ -10,8 +10,8 @@ public class IceGame2 : MonoBehaviour
     public GameObject iceComponent;
     private Button thisButton;
     public int iceBoost = 0;
-    public int cooldownIce = 10;
-    public int minigametime = 5;
+    public float cooldownIce = 10f;
+    public float minigametime = 5f;
     public float buff = 5;
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class IceGame2 : MonoBehaviour
 
     IEnumerator Icereset()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(minigametime);
         Iceboostlenght();
         ice = false;
         CheckForIce();

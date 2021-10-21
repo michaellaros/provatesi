@@ -59,15 +59,14 @@ public class Firegame : MonoBehaviour
         fire = false;
         CheckForFire();
         thisButton.interactable = false;
-
-        StartCoroutine(Buttoncooldown());
-    }
-
-    IEnumerator Buttoncooldown()
-    {
-        yield return new WaitForSeconds(cooldownfire + minigametime);
+        yield return new WaitForSeconds(cooldownfire);
         thisButton.interactable = true;
     }
+
+    //IEnumerator Buttoncooldown()
+    //{
+        
+    //}
 
     
     //controlla quanto lungo sara' il buff assegnato

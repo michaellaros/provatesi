@@ -16,6 +16,7 @@ TagManager:
   - Material
   - Objective
   - EnemyBullet
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

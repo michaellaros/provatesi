@@ -426,6 +426,8 @@ MonoBehaviour:
   maxRotationAngle: 0.5666502
   rotationSpeed: 40
   canRotate: 0
+  rotateX: 1
+  rotateY: 0
 --- !u!1 &9014643345104051911
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +482,8 @@ MonoBehaviour:
   maxRotationAngle: 3600
   rotationSpeed: 40
   canRotate: 0
+  rotateX: 0
+  rotateY: 1
 --- !u!65 &2239110548611426987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -506,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableOnTrigger:
-  - {fileID: 0}
+  - {fileID: 7181607054034785757}
   disableOnTrigger:
   - {fileID: 3691101907707646381}
 --- !u!1001 &7235293948976621857
@@ -674,7 +678,7 @@ PrefabInstance:
     - target: {fileID: 3846612606624647410, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3846612606624647410, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
@@ -709,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 5067709825140359333, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5067709825140359333, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}

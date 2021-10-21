@@ -41,14 +41,7 @@ public class PlayerBehavior : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter(Collision coll)
-    {
-        if (coll.collider.CompareTag("Material"))
-        {
-            //TODO aggiungere materiali al mago
-        }
 
-    }
     public void gameOverRoutine()
     {
         //ferma il gioco

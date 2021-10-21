@@ -301,7 +301,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014643345104051911}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 5
@@ -514,6 +514,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: FiondaSnap
       objectReference: {fileID: 0}
+    - target: {fileID: 3449596316318563552, guid: 494652daca921d14ab968f8daa041f09,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 788403267267814777, guid: 7b749719bcd53bb458593bad6c11fd08,
+        type: 3}
     - target: {fileID: 5285313620011510709, guid: 494652daca921d14ab968f8daa041f09,
         type: 3}
       propertyPath: father

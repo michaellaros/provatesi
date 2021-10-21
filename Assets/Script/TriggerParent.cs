@@ -8,13 +8,6 @@ public class TriggerParent : MonoBehaviour
     public GameObject[] enableOnTrigger;
     public GameObject[] disableOnTrigger;
     
-    public event Action outOfTrigger;
-    public void ExitTrigger() {
-        if (outOfTrigger != null) {
-            outOfTrigger();
-        }
-    }
-    
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Player"))
@@ -29,7 +22,6 @@ public class TriggerParent : MonoBehaviour
         {
             collider.transform.parent.parent.SetParent(null);
             DisableList();
-            ExitTrigger();
         }
     }
     public void DisableList()

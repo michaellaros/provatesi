@@ -58,8 +58,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProjectileObject: {fileID: 3397687657012961505, guid: d6cda8d9f7c169343aff1ba34c4ae487,
     type: 3}
-  ProjectileAuto: {fileID: 3397687657012961505, guid: 7709832f619295d46943583eb8e48b93,
-    type: 3}
   ProjectileForce: 20
   LaunchSound: {fileID: 8300000, guid: 5b096d3829195954e959ce0ec63ca481, type: 3}
   LaunchParticles: {fileID: 0}
@@ -82,6 +80,8 @@ MonoBehaviour:
   maxRotationAngle: 0.5666502
   rotationSpeed: 40
   canRotate: 0
+  rotateX: 1
+  rotateY: 0
 --- !u!1 &4802490968171723795
 GameObject:
   m_ObjectHideFlags: 0

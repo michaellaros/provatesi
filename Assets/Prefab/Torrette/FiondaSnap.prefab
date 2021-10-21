@@ -151,7 +151,7 @@ MonoBehaviour:
   GrabPoints: []
   UseCustomInspector: 1
   spawnPoint: {fileID: 6534942265006629631}
-  projectile: {fileID: 788403267267814777, guid: 0517aea182a79e94aa450149bb361b07,
+  projectile: {fileID: 788403267267814777, guid: 7b749719bcd53bb458593bad6c11fd08,
     type: 3}
   launchVelocity: 500
   readyToShoot: 0

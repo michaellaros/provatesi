@@ -27,7 +27,9 @@ public class AutoTurret : MonoBehaviour
     public List<GameObject> enemies;
     private float blastPower;
     private Transform cannonStart;
-    
+
+    private Vector3 lookPos;
+    private Quaternion rotation;
 
     void Start()
     {
@@ -50,7 +52,7 @@ public class AutoTurret : MonoBehaviour
         if (autoFire && shootReady && enemies.Count > 0)
         {
             if (target != null) {
-                turretBody.transform.LookAt(target.transform);
+                turretLookAt(target.transform);
                 Shoot();
             }else
             {
@@ -58,6 +60,13 @@ public class AutoTurret : MonoBehaviour
                 CheckForTarget();
             }  
         }
+    }
+
+    void turretLookAt(Transform target) {
+        lookPos = target.position - turretBody.transform.position;
+        lookPos.y = 0;
+        rotation = Quaternion.LookRotation(lookPos);
+        turretBody.transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
     }
     void Shoot()
     {

@@ -16749,7 +16749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dc4c75aa9c7ac4496efd08a068c08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 1.25
+  MovementSpeed: 3
   ForwardDirection: {fileID: 0}
   inputAxis: 01000000
   MoveAction: {fileID: 6972639530819350904, guid: e39f4b35a6db18348b41eb0262520e69,
@@ -17028,9 +17028,6 @@ MonoBehaviour:
   invincibleTime: 0
   dealyHealingTime: 0
   gameOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  materialCollected:
     m_PersistentCalls:
       m_Calls: []
   spawnManager: {fileID: 0}
@@ -32798,7 +32795,7 @@ GameObject:
   - component: {fileID: 4340531494487752619}
   m_Layer: 9
   m_Name: CollisionBody
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32831,7 +32828,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!136 &4340531494487752619
 CapsuleCollider:
@@ -32844,9 +32841,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.17
-  m_Height: 1.5
+  m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: -0.25, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!1 &3946253617465186285
 GameObject:
   m_ObjectHideFlags: 0

@@ -150,12 +150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  objectiveDamage: 1
+  objectiveDamage: 0
   attackRate: 2
   attackProjectile: {fileID: 3538906115082969408, guid: bad2cc23e3e69ad42bd242711380e0be,
     type: 3}
   spawnPointProjectile: {fileID: 5199931129018053680}
   stoppingDistance: 5
+  target: {fileID: 0}
   health: 10
   minDistanceForNextWaypoint: 8
   minDistancePlayerChase: 20

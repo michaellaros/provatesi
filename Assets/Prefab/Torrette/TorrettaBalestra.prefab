@@ -173,7 +173,7 @@ MonoBehaviour:
   cannon: {fileID: 7609849738050985020}
   bullet: {fileID: 788403267267814777, guid: 7b749719bcd53bb458593bad6c11fd08, type: 3}
   turretBody: {fileID: 9014643345104051911}
-  reloadTime: 2
+  reloadTime: 4
   shootReady: 1
   autoFire: 1
   enemies: []
@@ -290,7 +290,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.0917806
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b9f0ff530dce347b71aeb31012f93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileObject: {fileID: 788403267267814777, guid: 0517aea182a79e94aa450149bb361b07,
+  ProjectileObject: {fileID: 788403267267814777, guid: 151f4d0fcf400e64998af35002450e42,
     type: 3}
   ProjectileForce: 20
   LaunchSound: {fileID: 8300000, guid: 5b096d3829195954e959ce0ec63ca481, type: 3}
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71f5304f0b0b9b4092fce3d34560479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotator: {fileID: 2990482537308990221}
+  rotator: {fileID: 587563100839786827}
   minRotationAngle: 0.2444076
   maxRotationAngle: 0.5666502
   rotationSpeed: 40
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71f5304f0b0b9b4092fce3d34560479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotator: {fileID: 2990482537308990221}
+  rotator: {fileID: 2005630728814808663}
   minRotationAngle: -3600
   maxRotationAngle: 3600
   rotationSpeed: 40
@@ -915,6 +915,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.049
       objectReference: {fileID: 0}
+    - target: {fileID: 7490395199338615523, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490395199338615523, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSteeringAngle
+      objectReference: {fileID: 0}
     - target: {fileID: 7513006866546279905, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -985,6 +995,16 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8359003872943760895, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8359003872943760895, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onJoystickVectorChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSteeringAngle
+      objectReference: {fileID: 0}
     - target: {fileID: 8579512253598223611, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,6 +1019,26 @@ PrefabInstance:
         type: 3}
       propertyPath: onButtonDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 971048783780243033}
+    - target: {fileID: 8845235277293415054, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6494901875997926653}
+    - target: {fileID: 8845235277293415054, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6494901875997926653}
+    - target: {fileID: 8845235277293415054, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onGrab.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: canRotateTrue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845235277293415054, guid: 32513b0923c1e26429f6bc9afb104645,
+        type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: canRotateFalse
       objectReference: {fileID: 0}
     - target: {fileID: 9130758762861108271, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
@@ -1008,17 +1048,17 @@ PrefabInstance:
     - target: {fileID: 9130758762861108271, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9130758762861108271, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9130758762861108271, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9130758762861108271, guid: 32513b0923c1e26429f6bc9afb104645,
         type: 3}
@@ -1078,9 +1118,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8058148343864372133}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2990482537308990221 stripped
+--- !u!4 &587563100839786827 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5067709825140359336, guid: 32513b0923c1e26429f6bc9afb104645,
+  m_CorrespondingSourceObject: {fileID: 7490395199338615534, guid: 32513b0923c1e26429f6bc9afb104645,
+    type: 3}
+  m_PrefabInstance: {fileID: 8058148343864372133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2005630728814808663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8359003872943760882, guid: 32513b0923c1e26429f6bc9afb104645,
     type: 3}
   m_PrefabInstance: {fileID: 8058148343864372133}
   m_PrefabAsset: {fileID: 0}

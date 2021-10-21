@@ -208,7 +208,7 @@ MonoBehaviour:
   cannon: {fileID: 4593550996726094516}
   bullet: {fileID: 3397687657012961505, guid: 7709832f619295d46943583eb8e48b93, type: 3}
   turretBody: {fileID: 9014643345104051911}
-  reloadTime: 2
+  reloadTime: 4
   shootReady: 1
   autoFire: 1
   enemies: []

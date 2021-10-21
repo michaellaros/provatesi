@@ -151,7 +151,7 @@ MonoBehaviour:
   GrabPoints: []
   UseCustomInspector: 1
   spawnPoint: {fileID: 6534942265006629631}
-  projectile: {fileID: 788403267267814777, guid: 7b749719bcd53bb458593bad6c11fd08,
+  projectile: {fileID: 344870438335324430, guid: e33f977cc5dc9a4429ca8cf173a5cc0c,
     type: 3}
   launchVelocity: 500
   readyToShoot: 0
@@ -245,6 +245,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5285313620011510709}
+        m_TargetAssemblyTypeName: DestroyInCases, Assembly-CSharp
+        m_MethodName: DestroyMe
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -10,6 +10,9 @@ public class MineFreeze : MonoBehaviour
     public float destroyTime;
     public GameObject particle;
     public float mineDamage;
+    public float blastRadius = 20f;
+    public float explosionForce = 10f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,26 +24,67 @@ public class MineFreeze : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Instantiate(particle, transform.position, transform.rotation);
+
+            Explosion();
+            
+            toDetonate = false;
+            Destroy(gameObject);
+            //StartCoroutine("DestroyMe");
+        }
         if (collision.gameObject.CompareTag("Mine"))
         {
+            Instantiate(particle, transform.position, transform.rotation);
             if (toDetonate)
             {
-                particle.SetActive(true);
+
+                Explosion();
                 toDetonate = false;
-                StartCoroutine("DestroyMe");
+                //StartCoroutine("DestroyMe");
+                Destroy(gameObject);
+
             }
+            
         }
         if (primoImpatto)
         {
             StartCoroutine("Placing");
         }
     }
-    IEnumerator DestroyMe()
+
+    void Explosion()
     {
-        yield return new WaitForSeconds(destroyTime);
-        Destroy(this.gameObject);
+        Collider[] enemiesInArea = Physics.OverlapSphere(transform.position, blastRadius);
+        foreach (Collider nearbyObject in enemiesInArea)
+        {
+            if (nearbyObject.CompareTag("Enemy"))
+            {
+                nearbyObject.gameObject.GetComponent<Enemy>().TakeDamage(mineDamage);
+            }
+            
+        }
+
+        Collider[] enemiesToMove = Physics.OverlapSphere(transform.position, blastRadius);
+        foreach (Collider nearbyObject in enemiesToMove)
+        {
+            if (nearbyObject.CompareTag("Enemy"))
+            {
+                Rigidbody rb = nearbyObject.GetComponent<Rigidbody>();
+
+                if (rb != null)
+                {
+                    rb.AddExplosionForce(explosionForce, transform.position, blastRadius,3.0f);
+                }
+            }
+        }
     }
+    //IEnumerator DestroyMe()
+    //{
+    //    yield return new WaitForSeconds(destroyTime);
+    //    Destroy(this.gameObject);
+    //}
     IEnumerator Placing()
     {
         primoImpatto = false;

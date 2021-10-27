@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c2ebab51b61d348ba6d333fbb5d08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorymanager: {fileID: 654276739954563534, guid: 6d4e50388ec75a44f9478c2928dbbc92,
+    type: 3}
   spawnPoint: {fileID: 0}
   spawned: 0
   tower: {fileID: 8010499649198292785, guid: 0d7ee491752ede8499ce80ddb410d684, type: 3}
@@ -443,6 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c2ebab51b61d348ba6d333fbb5d08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorymanager: {fileID: 654276739954563534, guid: 6d4e50388ec75a44f9478c2928dbbc92,
+    type: 3}
   spawnPoint: {fileID: 0}
   spawned: 0
   tower: {fileID: 8010499649198292785, guid: 0d7ee491752ede8499ce80ddb410d684, type: 3}
@@ -590,6 +594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c2ebab51b61d348ba6d333fbb5d08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorymanager: {fileID: 654276739954563534, guid: 6d4e50388ec75a44f9478c2928dbbc92,
+    type: 3}
   spawnPoint: {fileID: 0}
   spawned: 0
   tower: {fileID: 8010499649198292785, guid: 0d7ee491752ede8499ce80ddb410d684, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
-   
+    public GameObject inventorymanager;
     public GameObject spawnPoint;
     public bool spawned;
     public GameObject tower;

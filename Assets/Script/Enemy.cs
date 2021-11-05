@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject canvas;
+    public GameObject slider;
     public float damage;
     public float objectiveDamage;
     public float attackRate;
@@ -39,7 +42,8 @@ public class Enemy : MonoBehaviour
     public GameObject[] dopppedItem;
     public int minDrop;
     public int maxDrop;
-
+    public Slider sliderhp;
+    public Canvas canvasHp;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,6 +59,10 @@ public class Enemy : MonoBehaviour
         nextWaypoint = WaypointArray[currentWaypoint];
         target = WaypointArray[currentWaypoint];
         readyToAttack = true;
+        sliderhp = slider.GetComponent<Slider>();
+        sliderhp.maxValue = health;
+        //canvasHp = GetComponent<Canvas>();
+        //canvasHp.renderMode = RenderMode.WorldSpace
     }
 
     private void FixedUpdate()
@@ -118,6 +126,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float amount) {
         health -= amount;
+        sliderhp.value = health;
         if (health <= 0f) {
             Die(true);
         }

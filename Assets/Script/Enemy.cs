@@ -148,20 +148,20 @@ public class Enemy : MonoBehaviour
         if (elementManager.GetComponent<CheckElement>().fire)
         {
             fireFX.SetActive(true);
-            //debufffuoco
+            //danno nel tempo, danno fisico subito ridotto
 
         }
 
         if (elementManager.GetComponent<CheckElement>().ice)
         {
             iceFX.SetActive(true);
-            //debuffghiaccio
+            //rallenta movimento ed animazione (plus, ogni hit aumenta il rallentamento, fino a x3)
         }
 
         if (elementManager.GetComponent<CheckElement>().thunder)
         {
             thunderFX.SetActive(true);
-            //debuffice
+            //resetta eventuali animazioni ed attacchi ogni x tempo
         }
     }
     void Die(bool drop) {

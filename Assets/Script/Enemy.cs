@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject fireFX;
+    public GameObject iceFX;
+    public GameObject thunderFX;
+    public GameObject elementManager;
     public GameObject canvas;
     public GameObject slider;
     public float damage;
@@ -27,9 +31,8 @@ public class Enemy : MonoBehaviour
     private GameObject _player;
 
     private Animator animator;
-
+    private bool fullHealth = true;
     [SerializeField] private float health;
-
     public float minDistanceForNextWaypoint;
     private float distanceFromTarget;
     private float distanceFromWaypoint;
@@ -42,8 +45,10 @@ public class Enemy : MonoBehaviour
     public GameObject[] dopppedItem;
     public int minDrop;
     public int maxDrop;
-    public Slider sliderhp;
-    public Canvas canvasHp;
+    private Slider sliderhp;
+    private Vector3 playerPositionSlider;
+    
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -61,12 +66,14 @@ public class Enemy : MonoBehaviour
         readyToAttack = true;
         sliderhp = slider.GetComponent<Slider>();
         sliderhp.maxValue = health;
-        //canvasHp = GetComponent<Canvas>();
-        //canvasHp.renderMode = RenderMode.WorldSpace
+        
+        
     }
 
     private void FixedUpdate()
     {
+
+        //canvas.transform.LookAt(playerPositionSlider);
         if (obstacleFound!=null) {
             StopEnemy();
             if (readyToAttack)
@@ -125,10 +132,36 @@ public class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(float amount) {
+        fullHealth = false;
+        if (!fullHealth)
+            slider.SetActive(true);
         health -= amount;
         sliderhp.value = health;
+        CheckForElement();
         if (health <= 0f) {
             Die(true);
+        }
+    }
+
+    public void CheckForElement()
+    {
+        if (elementManager.GetComponent<CheckElement>().fire)
+        {
+            fireFX.SetActive(true);
+            //debufffuoco
+
+        }
+
+        if (elementManager.GetComponent<CheckElement>().ice)
+        {
+            iceFX.SetActive(true);
+            //debuffghiaccio
+        }
+
+        if (elementManager.GetComponent<CheckElement>().thunder)
+        {
+            thunderFX.SetActive(true);
+            //debuffice
         }
     }
     void Die(bool drop) {

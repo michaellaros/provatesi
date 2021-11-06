@@ -81,7 +81,7 @@ MonoBehaviour:
   primoImpatto: 0
   destroyTime: 1.5
   particle: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-  mineDamage: 5
+  mineDamage: 1
   blastRadius: 5
   explosionForce: 700
 --- !u!114 &5106338647967614776

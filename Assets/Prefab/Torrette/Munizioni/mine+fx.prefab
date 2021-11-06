@@ -77,12 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f3fa01107f2cb49933638367c90891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeze: 0
-  primoImpattoEX: 0
+  toDetonate: 0
   primoImpatto: 0
   destroyTime: 1.5
   particle: {fileID: 4262325890716948600}
-  mineDamage: 0
+  mineDamage: 1
+  blastRadius: 20
+  explosionForce: 250
 --- !u!1001 &2728221353724114599
 PrefabInstance:
   m_ObjectHideFlags: 0

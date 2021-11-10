@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannon: {fileID: 4593550996726094516}
-  bullet: {fileID: 3397687657012961505, guid: 7709832f619295d46943583eb8e48b93, type: 3}
+  bullet: {fileID: 1889843905315170227, guid: d3dd6e9cd1218cd47953e4583b4f5455, type: 3}
   turretBody: {fileID: 9014643345104051911}
   reloadTime: 4
   shootReady: 1

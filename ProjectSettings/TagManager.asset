@@ -17,6 +17,8 @@ TagManager:
   - Objective
   - EnemyBullet
   - PlayerBody
+  - Terrain
+  - FireZone
   layers:
   - Default
   - TransparentFX

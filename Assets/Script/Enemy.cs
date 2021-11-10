@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public List <GameObject> collidersAndJoints;
     public GameObject fireFX;
     public GameObject iceFX;
     public GameObject thunderFX;
@@ -15,9 +16,11 @@ public class Enemy : MonoBehaviour
     public float damage;
     public float objectiveDamage;
     public float attackRate;
+    
     public Transform attackProjectile;
     public Transform spawnPointProjectile;
     private bool readyToAttack;
+    
     [SerializeField] float stoppingDistance;
 
     NavMeshAgent agent;
@@ -32,6 +35,9 @@ public class Enemy : MonoBehaviour
 
     private Animator animator;
     private bool fullHealth = true;
+    public bool onFire;
+    public bool isParalyzed;
+
     [SerializeField] private float health;
     public float minDistanceForNextWaypoint;
     private float distanceFromTarget;
@@ -46,11 +52,14 @@ public class Enemy : MonoBehaviour
     public int minDrop;
     public int maxDrop;
     private Slider sliderhp;
+    
     private Vector3 playerPositionSlider;
     
     
     private void Start()
     {
+        onFire = false;
+        isParalyzed = false;
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -72,42 +81,56 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
+        
 
-        //canvas.transform.LookAt(playerPositionSlider);
-        if (obstacleFound!=null) {
-            StopEnemy();
-            if (readyToAttack)
+
+            //canvas.transform.LookAt(playerPositionSlider);
+            if (obstacleFound != null)
             {
-                try
+                StopEnemy();
+                if (readyToAttack)
                 {
-                    obstacleFound.GetComponent<Door>().TakeDamage(damage);
+                    try
+                    {
+                        if(onFire)
+                    {
+                        obstacleFound.GetComponent<Door>().TakeDamage(damage / 2);
+                    }
+                        
+                        else
+                    {
+                        obstacleFound.GetComponent<Door>().TakeDamage(damage);
+                    }
+                        
+                        Attack();
+                    }
+                    catch
+                    {
+                        Debug.Log("Non ha un componente door");
+                    }
+                }
+                return;
+            }
+            SelectTarget();
+            distanceFromTarget = Vector3.Distance(transform.position, target.position);
+            if (distanceFromTarget < stoppingDistance)
+            {
+                FollowTarget();
+                StopEnemy();
+                if (target == _player.transform && readyToAttack)
+                {
+                    Shoot();
                     Attack();
                 }
-                catch
-                {
-                    Debug.Log("Non ha un componente door");
-                }
+                return;
             }
-            return;
-        }
-        SelectTarget();
-        distanceFromTarget = Vector3.Distance(transform.position, target.position);
-        if (distanceFromTarget < stoppingDistance)
-        {
-            FollowTarget();
-            StopEnemy();
-            if (target == _player.transform && readyToAttack) {
-                Shoot();
-                Attack();
+            else
+            {
+                GoToTarget();
             }
-            return;
-        }
-        else
-        {
-            GoToTarget();
-        }
+        
     }
-
     private void Attack() {
         //animator attack TODO
         readyToAttack = false;
@@ -143,27 +166,74 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    
+    
     public void CheckForElement()
     {
         if (elementManager.GetComponent<CheckElement>().fire)
         {
             fireFX.SetActive(true);
-            //danno nel tempo, danno fisico subito ridotto
-
+            FireDebuff();
         }
 
         if (elementManager.GetComponent<CheckElement>().ice)
         {
             iceFX.SetActive(true);
+            animator.speed = 0.5f;
+            agent.speed = agent.speed / 2;
             //rallenta movimento ed animazione (plus, ogni hit aumenta il rallentamento, fino a x3)
         }
 
         if (elementManager.GetComponent<CheckElement>().thunder)
         {
-            thunderFX.SetActive(true);
+            ThunderDebuff();
             //resetta eventuali animazioni ed attacchi ogni x tempo
         }
     }
+    void ThunderDebuff()
+    {
+        if (!isParalyzed)
+        {
+            isParalyzed = true;
+            thunderFX.SetActive(true);
+            StartCoroutine(Paralysis());
+        }
+    }
+    IEnumerator Paralysis()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            yield return new WaitForSeconds(0.5f);
+            if(Random.Range(0, 100)< 60)
+            {
+                animator.speed = 0;
+                agent.speed = 0;
+            }
+            else
+            {
+                animator.speed = 1;
+                agent.speed = 8;
+            }
+        }
+        animator.speed = 1;
+        agent.speed = 8;
+        isParalyzed = false;
+        thunderFX.SetActive(false);
+    }
+    IEnumerator DamageOverTime()
+    {
+        for (int ripetizione = 1; ripetizione < 10; ripetizione++)
+        {
+            TakeDamage(2.5f);
+            yield return new WaitForSeconds(0.5f);
+            
+
+        }
+        onFire = false;
+        fireFX.SetActive(false);
+    }
+
+    
     void Die(bool drop) {
         if (drop)
         {
@@ -182,6 +252,29 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void FireDebuff()
+    {
+        if(!onFire)
+        {
+            onFire = true;
+            StartCoroutine(DamageOverTime());
+        }
+        
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("FireZone"))
+        {
+            FireDebuff();
+            fireFX.SetActive(true);
+            //thunderFX.SetActive(true);
+            //StartCoroutine(Paralysis());
+
+            //iceFX.SetActive(true);
+            //animator.speed = 0.5f;
+            //agent.speed = agent.speed / 2;
+        }
+    }
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Obstacle"))
@@ -233,3 +326,37 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(resultingDirection);
     }
 }
+//public void TakeExplosion(float explosionForce, Vector3 explosionCenter, float explosionRadius)
+//{
+
+//    //DisableMovement();
+
+
+
+//    //StartCoroutine(WaitToGetUp());
+
+
+//}
+
+
+//public void DisableMovement()
+//{
+
+//    collidersAndJoints[0].GetComponent<CapsuleCollider>().enabled = false;
+//    collidersAndJoints[0].GetComponent<Rigidbody>().isKinematic = true;
+//    for (int i = 1; i < collidersAndJoints.Count; i++)
+
+//    {
+//        collidersAndJoints[i].GetComponent<Collider>().enabled = true;
+//    }
+
+//    animator.enabled = false;
+//    agent.enabled = false;
+//}
+//IEnumerator WaitToGetUp()
+//{
+//    yield return new WaitForSeconds(4);
+//    EnableMovement();
+//}
+
+

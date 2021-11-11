@@ -6,58 +6,62 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public List <GameObject> collidersAndJoints;
-    public GameObject fireFX;
-    public GameObject iceFX;
-    public GameObject thunderFX;
-    public GameObject elementManager;
-    public GameObject canvas;
-    public GameObject slider;
-    public float damage;
-    public float objectiveDamage;
-    public float attackRate;
-    
-    public Transform attackProjectile;
-    public Transform spawnPointProjectile;
+    private static int EnemyCount;
+    public int id;
+    //Variabili degli attacchi e vita
+    [SerializeField] private float health;
+    [SerializeField] private float damage;
+    [SerializeField] private float objectiveDamage;
+    [SerializeField] private float attackRate;
+    [SerializeField] private Transform attackProjectile;
+    [SerializeField] private Transform spawnPointProjectile;
     private bool readyToAttack;
-    
-    [SerializeField] float stoppingDistance;
-
+    [SerializeField] private float stoppingDistance;
+    //Variabili del navmesh
     NavMeshAgent agent;
-
     private Transform pathway;
     private Transform[] WaypointArray;
     private int currentWaypoint;
     private Transform nextWaypoint;
-    [SerializeField]
-    private Transform target;    
+    [SerializeField] private Transform target;    
     private GameObject _player;
-
-    private Animator animator;
-    private bool fullHealth = true;
-    public bool onFire;
-    public bool isParalyzed;
-
-    [SerializeField] private float health;
-    public float minDistanceForNextWaypoint;
+    [SerializeField] private float minDistanceForNextWaypoint;
     private float distanceFromTarget;
     private float distanceFromWaypoint;
     private float distanceFromPlayer;
-    public float minDistancePlayerChase;
-    public float maxDistancePlayerChase;
-
+    [SerializeField] private float minDistancePlayerChase;
+    [SerializeField] private float maxDistancePlayerChase;
     private GameObject obstacleFound;
-
-    public GameObject[] dopppedItem;
-    public int minDrop;
-    public int maxDrop;
+    //varibili di animazione
+    private Animator animator;
+    private bool fullHealth = true;
+    [SerializeField] private bool onFire;
+    [SerializeField] private bool isParalyzed;
+    //varibili dei drop
+    [SerializeField] private GameObject[] droppedItem;
+    [SerializeField] private int minDrop;
+    [SerializeField] private int maxDrop;
+    [SerializeField] private int dropNumber;
+    //Lista dei Joint e loro collider
+    [SerializeField] private List<GameObject> collidersAndJoints;
+    //gameobj da istanziare se prende quel tipo di danno
+    [SerializeField] private GameObject fireFX;
+    [SerializeField] private GameObject iceFX;
+    [SerializeField] private GameObject thunderFX;
+    [SerializeField] private GameObject elementManager;
+    //UI elements
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private GameObject slider;
+    [SerializeField] private OscEnemySender OES;
     private Slider sliderhp;
-    
     private Vector3 playerPositionSlider;
-    
-    
+
     private void Start()
     {
+        //Setting enemy id
+        EnemyCount = EnemyCount + 1;
+        id = EnemyCount;
+        //inizializing variables
         onFire = false;
         isParalyzed = false;
         animator = GetComponent<Animator>();
@@ -75,16 +79,10 @@ public class Enemy : MonoBehaviour
         readyToAttack = true;
         sliderhp = slider.GetComponent<Slider>();
         sliderhp.maxValue = health;
-        
-        
+        dropNumber = Random.Range(minDrop, maxDrop);
     }
-
     private void FixedUpdate()
     {
-        
-        
-
-
             //canvas.transform.LookAt(playerPositionSlider);
             if (obstacleFound != null)
             {
@@ -147,13 +145,11 @@ public class Enemy : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
-
     private void StopEnemy()
     {
         animator.SetBool("IsMoving", false);
         agent.isStopped = true;
     }
-
     public void TakeDamage(float amount) {
         fullHealth = false;
         if (!fullHealth)
@@ -165,9 +161,6 @@ public class Enemy : MonoBehaviour
             Die(true);
         }
     }
-
-    
-    
     public void CheckForElement()
     {
         if (elementManager.GetComponent<CheckElement>().fire)
@@ -175,7 +168,6 @@ public class Enemy : MonoBehaviour
             fireFX.SetActive(true);
             FireDebuff();
         }
-
         if (elementManager.GetComponent<CheckElement>().ice)
         {
             iceFX.SetActive(true);
@@ -183,7 +175,6 @@ public class Enemy : MonoBehaviour
             agent.speed = agent.speed / 2;
             //rallenta movimento ed animazione (plus, ogni hit aumenta il rallentamento, fino a x3)
         }
-
         if (elementManager.GetComponent<CheckElement>().thunder)
         {
             ThunderDebuff();
@@ -232,8 +223,6 @@ public class Enemy : MonoBehaviour
         onFire = false;
         fireFX.SetActive(false);
     }
-
-    
     void Die(bool drop) {
         if (drop)
         {
@@ -244,14 +233,12 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
     void DropItem() {
-        int dropNumber = Random.Range(minDrop, maxDrop);
         for (int i = 0; i < dropNumber; i++)
         {
-            var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length)], transform.position, transform.rotation);
+            var drop = Instantiate(droppedItem[Random.Range(0, droppedItem.Length)], transform.position, transform.rotation);
             drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 3);
         }
     }
-
     void FireDebuff()
     {
         if(!onFire)
@@ -324,6 +311,9 @@ public class Enemy : MonoBehaviour
         float maxTurnSpeed = 90f; // degrees per second
         Vector3 resultingDirection = Vector3.RotateTowards(currentDirection, directionToTarget, maxTurnSpeed * Mathf.Deg2Rad * Time.deltaTime, 10f);
         transform.rotation = Quaternion.LookRotation(resultingDirection);
+    }
+    public float getHealth() {
+        return health;
     }
 }
 //public void TakeExplosion(float explosionForce, Vector3 explosionCenter, float explosionRadius)

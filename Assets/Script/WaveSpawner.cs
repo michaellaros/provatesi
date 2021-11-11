@@ -33,18 +33,15 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	private float searchCountdown = 1f;
-
 	private SpawnState state = SpawnState.COUNTING;
 	public SpawnState State
 	{
 		get { return state; }
 	}
-
 	void Start()
 	{
 		waveCountdown = timeBetweenWaves;
 	}
-
 	void Update()
 	{
 		if (state == SpawnState.WAITING)
@@ -59,7 +56,6 @@ public class WaveSpawner : MonoBehaviour {
 				return;
 			}
 		}
-
 		if (waveCountdown <= 0)
 		{
 			if (state != SpawnState.SPAWNING)
@@ -72,7 +68,6 @@ public class WaveSpawner : MonoBehaviour {
 			waveCountdown -= Time.deltaTime;
 		}
 	}
-
 	void WaveCompleted()
 	{
 		Debug.Log("Wave Completed!");
@@ -90,7 +85,6 @@ public class WaveSpawner : MonoBehaviour {
 			nextWave++;
 		}
 	}
-
 	bool EnemyIsAlive()
 	{
 		searchCountdown -= Time.deltaTime;
@@ -104,13 +98,11 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		return true;
 	}
-
 	IEnumerator SpawnWave(Wave _wave)
 	{
 		//Debug.Log("Spawning Wave: " + _wave.name);
 		roundName.SetText(_wave.name);
 		state = SpawnState.SPAWNING;
-
 		for (int i = 0; i < _wave.count; i++)
         {
             SpawnEnemy(_wave.enemys[Random.Range(0, _wave.enemys.Length)], _wave);
@@ -131,5 +123,4 @@ public class WaveSpawner : MonoBehaviour {
         enemy.transform.SetParent(_sp);
 		GameEvents.singleton.EnemySpawn(enemy.gameObject);
 	}
-
 }

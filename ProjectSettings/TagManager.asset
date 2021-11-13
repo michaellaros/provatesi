@@ -19,6 +19,7 @@ TagManager:
   - PlayerBody
   - Terrain
   - FireZone
+  - OSC
   layers:
   - Default
   - TransparentFX

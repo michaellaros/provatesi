@@ -13,27 +13,24 @@ public class OscEnemySender : MonoBehaviour
         myOsc = GameObject.FindGameObjectWithTag("OSC").GetComponent<OSC>();
         me = GetComponent<Enemy>();
     }
-    private void SendTransform() {
+    private void EnemyUpdateMessage() {
         messageToSend = new OscMessage();
         messageToSend.address = "/EnemyValue";
         messageToSend.values.Add(me.id);
         messageToSend.values.Add(me.getHealth());
-        AddTranformToMessage(transform);
+        //add position
+        messageToSend.values.Add(transform.localPosition.x);
+        messageToSend.values.Add(transform.localPosition.y);
+        messageToSend.values.Add(transform.localPosition.z);
+        //add rotation
+        messageToSend.values.Add(transform.localRotation.x);
+        messageToSend.values.Add(transform.localRotation.y);
+        messageToSend.values.Add(transform.localRotation.z);
+        messageToSend.values.Add(transform.localRotation.w);
+        //send message
         myOsc.Send(messageToSend);
     }
-    private void AddTranformToMessage(Transform t)
-    {
-        //add position
-        messageToSend.values.Add(t.localPosition.x);
-        messageToSend.values.Add(t.localPosition.y);
-        messageToSend.values.Add(t.localPosition.z);
-        //add rotation
-        messageToSend.values.Add(t.localRotation.x);
-        messageToSend.values.Add(t.localRotation.y);
-        messageToSend.values.Add(t.localRotation.z);
-        messageToSend.values.Add(t.localRotation.w);
-    }
-    public void deathMessage()
+    public void DeathMessage()
     {
         messageToSend = new OscMessage();
         messageToSend.address = "/EnemyDeath";

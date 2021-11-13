@@ -121,6 +121,7 @@ public class WaveSpawner : MonoBehaviour {
         Transform _sp = _wave.spawnPoints[Random.Range(0, _wave.spawnPoints.Length)];
         var enemy = Instantiate(_enemy, _sp.position, _sp.rotation);
         enemy.transform.SetParent(_sp);
+        //manda al pc, enemy + sp
 		GameEvents.singleton.EnemySpawn(enemy.gameObject);
 	}
 }

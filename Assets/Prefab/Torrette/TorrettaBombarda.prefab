@@ -1191,6 +1191,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: base balestra
       objectReference: {fileID: 0}
+    - target: {fileID: 2062018615975062309, guid: 020c0b515cc0aa344a7ec31087ae43e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511650899636917630, guid: 020c0b515cc0aa344a7ec31087ae43e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6653188140545753876, guid: 020c0b515cc0aa344a7ec31087ae43e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 020c0b515cc0aa344a7ec31087ae43e9, type: 3}
 --- !u!4 &8036206443902111053 stripped

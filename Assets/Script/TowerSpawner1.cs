@@ -8,7 +8,6 @@ public class TowerSpawner1 : MonoBehaviour
     public GameObject redButton;
     public GameObject greenButton;
     public GameObject blueButton;
-    public GameObject spawnPoint;
     public bool clicked;
     //public float x = 0;
     //public float y = 0;

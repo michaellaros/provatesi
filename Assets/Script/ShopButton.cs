@@ -5,37 +5,107 @@ using UnityEngine.UI;
 
 public class ShopButton : MonoBehaviour
 {
-    public GameObject inventorymanager;
+    public InventoryManager inventorymanager;
     public GameObject spawnPoint;
     public bool spawned;
-    public GameObject tower;
+    public List <GameObject> tower;
+    private ShopButton redB;
+    private ShopButton greenB;
+    private ShopButton blueB;
+    private Button myButton;
+
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoint = transform.parent.GetComponent<TowerSpawner1>().spawnPoint;
+        GameEvents.singleton.onGemCollected += GemCollected;
+        GameObject parentButton = transform.parent.gameObject;
+        redB = parentButton.transform.GetChild(0).GetComponent<ShopButton>();
+        greenB = parentButton.transform.GetChild(1).GetComponent<ShopButton>();
+        blueB = parentButton.transform.GetChild(2).GetComponent<ShopButton>();
+        myButton = GetComponent<Button>();
+        myButton.onClick.AddListener(OnClick);
     }
 
-    // Update is called once per frame
-    
-
-    public void ButtonController()
+    private void OnDestroy()
     {
-        spawned = true;
-        Instantiate(tower, spawnPoint.transform.position, Quaternion.identity);
-        GameEvents.singleton.SpawnTower();
-        CheckForSpawn();
+        GameEvents.singleton.onGemCollected -= GemCollected;
     }
-    public void CheckForSpawn()
-    {
-        if (spawned)
-        {
 
-            GetComponent<Button>().interactable = false;
-        }
+    public void GemCollected(int gemType)
+    {
         if (!spawned)
         {
-
-            GetComponent<Button>().interactable = true;
+            if (inventorymanager.copperGem >= 5)
+            {
+                myButton.interactable = true;
+            }
         }
+    }
+
+    
+    // Update is called once per frame
+    void Update()
+    {
+        if (!spawned)
+        {
+            if (inventorymanager.copperGem >= 5)
+            {
+                myButton.interactable = true;
+            }
+        }
+
+    }
+    public void OnClick() {
+        if (transform.name == "Red") 
+        {
+            REDButtonController();
+        }
+        if (transform.name == "Blue")
+        {
+            BLUEButtonController();
+        }
+        if (transform.name == "Green")
+        {
+            GREENButtonController();
+        }
+    }
+    public void SpawnedTrue()
+    {
+        spawned = true;
+        myButton.interactable = false;
+    }
+
+    public void REDButtonController()
+    {
+        redB.SpawnedTrue();
+        greenB.SpawnedTrue();
+        blueB.SpawnedTrue();
+        Instantiate(tower[0], spawnPoint.transform.position, Quaternion.identity);
+        GameEvents.singleton.SpawnTower();
+        
+    }
+
+
+
+    public void GREENButtonController()
+    {
+        redB.SpawnedTrue();
+        greenB.SpawnedTrue();
+        blueB.SpawnedTrue();
+        Instantiate(tower[1], spawnPoint.transform.position, Quaternion.identity);
+        GameEvents.singleton.SpawnTower();
+        
+    }
+
+
+
+    public void BLUEButtonController()
+    {
+        redB.SpawnedTrue();
+        greenB.SpawnedTrue();
+        blueB.SpawnedTrue();
+        Instantiate(tower[2], spawnPoint.transform.position, Quaternion.identity);
+        GameEvents.singleton.SpawnTower();
+        
     }
 }

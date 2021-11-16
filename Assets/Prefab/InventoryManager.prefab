@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueGem: 0
-  copperGem: 0
+  copperGem: 10
   goldGem: 0
   greenGem: 0
   redGem: 0

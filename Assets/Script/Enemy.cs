@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public List <GameObject> collidersAndJoints;
+    
     public GameObject fireFX;
     public GameObject iceFX;
     public GameObject thunderFX;
@@ -241,6 +242,13 @@ public class Enemy : MonoBehaviour
             //ragdoll code
         }
         //add event to tell pc
+        animator.SetBool("Die", true);
+        StartCoroutine(EnemyKill());
+    }
+
+    IEnumerator EnemyKill()
+    {
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
     void DropItem() {

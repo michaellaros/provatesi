@@ -19,6 +19,7 @@ TagManager:
   - PlayerBody
   - Terrain
   - FireZone
+  - Arrow
   layers:
   - Default
   - TransparentFX

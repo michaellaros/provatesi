@@ -17,13 +17,26 @@ public class TeleportPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (succedequalcosa)
-            StartCoroutine(TeleportPoint());
-           
         if (Input.GetKeyDown(KeyCode.A))
+        {
             succedequalcosa = true;
+        }
+        //    succedequalcosa = true;
+
+        //if (succedequalcosa)
+        //    StartCoroutine(TeleportPoint());
     }
 
+    void FixedUpdate()
+    {
+        if (succedequalcosa)
+        {
+            questo.transform.position = new Vector3(tpointUnderground.transform.position.x,
+                       tpointUnderground.transform.position.y, tpointUnderground.transform.position.z);
+            succedequalcosa = false;
+        }
+        
+    }
     
 
     IEnumerator TeleportPoint()
@@ -31,6 +44,7 @@ public class TeleportPlayer : MonoBehaviour
         succedequalcosa = false;
         particles.SetActive(true);
         yield return new WaitForSeconds(3);
+
         gameObject.transform.position = new Vector3(tpointUnderground.transform.position.x,
             tpointUnderground.transform.position.y, tpointUnderground.transform.position.z);
         

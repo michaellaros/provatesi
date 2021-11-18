@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldBehaviour : MonoBehaviour
 {
+    public GameObject arrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,11 @@ public class ShieldBehaviour : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Arrow"))
         {
-            Destroy(other);
+            arrow.GetComponent<Collider>().enabled = false;
         }
     }
 }

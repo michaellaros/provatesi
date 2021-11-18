@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject obstacleFound;
 
-    public GameObject[] dopppedItem;
+    public GameObject[] droppedItem;
     public int minDrop;
     public int maxDrop;
     private Slider sliderhp;
@@ -76,16 +76,10 @@ public class Enemy : MonoBehaviour
         readyToAttack = true;
         sliderhp = slider.GetComponent<Slider>();
         sliderhp.maxValue = health;
-        
-        
     }
 
     private void FixedUpdate()
     {
-        
-        
-
-
             //canvas.transform.LookAt(playerPositionSlider);
             if (obstacleFound != null)
             {
@@ -95,14 +89,13 @@ public class Enemy : MonoBehaviour
                     try
                     {
                         if(onFire)
-                    {
-                        obstacleFound.GetComponent<Door>().TakeDamage(damage / 2);
-                    }
-                        
+                        {
+                            obstacleFound.GetComponent<Door>().TakeDamage(damage / 2);
+                        }
                         else
-                    {
-                        obstacleFound.GetComponent<Door>().TakeDamage(damage);
-                    }
+                        {
+                            obstacleFound.GetComponent<Door>().TakeDamage(damage);
+                        }
                         
                         Attack();
                     }
@@ -117,11 +110,11 @@ public class Enemy : MonoBehaviour
             distanceFromTarget = Vector3.Distance(transform.position, target.position);
             if (distanceFromTarget < stoppingDistance)
             {
-                FollowTarget();
+                LookAtTarget();
                 StopEnemy();
                 if (target == _player.transform && readyToAttack)
                 {
-                    Shoot();
+                    //Shoot();
                     Attack();
                 }
                 return;
@@ -133,17 +126,25 @@ public class Enemy : MonoBehaviour
         
     }
     private void Attack() {
-        //animator attack TODO
+        animator.SetTrigger("Attack");
         readyToAttack = false;
-        Invoke("AgainReadyToAttack", attackRate);
+        StartCoroutine("AgainReadyToAttack");
     }
-    void Shoot()
+
+    IEnumerator AgainReadyToAttack()
     {
-        Transform _bullet = Instantiate(attackProjectile, spawnPointProjectile.position, spawnPointProjectile.rotation);
-        _bullet.GetComponent<EnemyBullet>().target = _player;
+        
+        yield return new WaitForSeconds(attackRate);
+        readyToAttack = true;
     }
+    //void Shoot()
+    //{
+    //    Transform _bullet = Instantiate(attackProjectile, spawnPointProjectile.position, spawnPointProjectile.rotation);
+    //    _bullet.GetComponent<EnemyBullet>().target = _player;
+    //}
     private void GoToTarget()
     {
+        
         animator.SetBool("IsMoving", true);
         agent.isStopped = false;
         agent.SetDestination(target.position);
@@ -156,6 +157,10 @@ public class Enemy : MonoBehaviour
     }
 
     public void TakeDamage(float amount) {
+        if (amount >= 20f)
+        {
+            animator.SetTrigger("Hit");
+        }
         fullHealth = false;
         if (!fullHealth)
             slider.SetActive(true);
@@ -165,6 +170,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0f) {
             Die(true);
         }
+
     }
 
     
@@ -255,7 +261,7 @@ public class Enemy : MonoBehaviour
         int dropNumber = Random.Range(minDrop, maxDrop);
         for (int i = 0; i < dropNumber; i++)
         {
-            var drop = Instantiate(dopppedItem[Random.Range(0, dopppedItem.Length)], transform.position, transform.rotation);
+            var drop = Instantiate(droppedItem[Random.Range(0, droppedItem.Length)], transform.position, transform.rotation);
             drop.GetComponent<Rigidbody>().AddForce(drop.transform.up * 3);
         }
     }
@@ -322,10 +328,8 @@ public class Enemy : MonoBehaviour
         }
         target = nextWaypoint;
     }
-    void AgainReadyToAttack() {
-        readyToAttack = true;
-    }
-    public void FollowTarget()
+   
+    public void LookAtTarget()
     {
         Vector3 directionToTarget = target.transform.position - transform.position;
         Vector3 currentDirection = transform.forward;

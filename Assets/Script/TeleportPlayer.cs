@@ -44,6 +44,7 @@ public class TeleportPlayer : MonoBehaviour
         succedequalcosa = false;
         particles.SetActive(true);
         yield return new WaitForSeconds(3);
+        yield return new WaitForFixedUpdate();
 
         gameObject.transform.position = new Vector3(tpointUnderground.transform.position.x,
             tpointUnderground.transform.position.y, tpointUnderground.transform.position.z);

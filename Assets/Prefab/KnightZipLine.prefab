@@ -451,6 +451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 430128202213772968, guid: 9490ffd3ae7b63e418ba02a0769b86a9,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430128202213772968, guid: 9490ffd3ae7b63e418ba02a0769b86a9,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -478,6 +483,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZipLineGrabber
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875892505466408124, guid: 13049a06e1e88ab42b7949927a970b75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4875892505466408128, guid: 13049a06e1e88ab42b7949927a970b75,
         type: 3}
@@ -633,6 +643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ClimbPole
+      objectReference: {fileID: 0}
+    - target: {fileID: 430128202213772968, guid: 9490ffd3ae7b63e418ba02a0769b86a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 430128202213772968, guid: 9490ffd3ae7b63e418ba02a0769b86a9,
         type: 3}

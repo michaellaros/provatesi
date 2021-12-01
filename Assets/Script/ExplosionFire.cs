@@ -25,9 +25,9 @@ public class ExplosionFire : MonoBehaviour
     IEnumerator DestroyThat()
     {
         yield return new WaitForSeconds(10);
-        foreach (GameObject fires in fire)
+        //foreach (GameObject fires in fire)
         {
-            Destroy(fires);
+            Destroy(gameObject);
         }
     }
 }

@@ -263,8 +263,10 @@ public class Enemy : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("FireZone"))
+        Debug.Log("entro trigger");
+        if (other.gameObject.CompareTag("FireZone"))
         {
+            Debug.Log("prendo fuoco");
             FireDebuff();
             fireFX.SetActive(true);
             //thunderFX.SetActive(true);

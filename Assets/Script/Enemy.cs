@@ -153,41 +153,34 @@ public class Enemy : MonoBehaviour
         animator.SetBool("IsMoving", false);
         agent.isStopped = true;
     }
-
-    public void TakeDamage(float amount) {
+    //element 0 = none, 1 = fire, 2 = ice, 3 = thunder
+    public void TakeDamage(float amount, int element) {
         fullHealth = false;
         if (!fullHealth)
             slider.SetActive(true);
         health -= amount;
         sliderhp.value = health;
-        CheckForElement();
+        switch (element)
+        {
+            case 0:
+                break;
+            case 1:
+                fireFX.SetActive(true);
+                FireDebuff();
+                break;
+            case 2:
+                iceFX.SetActive(true);
+                animator.speed = 0.5f;
+                agent.speed = agent.speed / 2;
+                break;
+            case 3:
+                ThunderDebuff();
+                break;
+        }
+
+        
         if (health <= 0f) {
             Die(true);
-        }
-    }
-
-    
-    
-    public void CheckForElement()
-    {
-        if (elementManager.GetComponent<CheckElement>().fire)
-        {
-            fireFX.SetActive(true);
-            FireDebuff();
-        }
-
-        if (elementManager.GetComponent<CheckElement>().ice)
-        {
-            iceFX.SetActive(true);
-            animator.speed = 0.5f;
-            agent.speed = agent.speed / 2;
-            //rallenta movimento ed animazione (plus, ogni hit aumenta il rallentamento, fino a x3)
-        }
-
-        if (elementManager.GetComponent<CheckElement>().thunder)
-        {
-            ThunderDebuff();
-            //resetta eventuali animazioni ed attacchi ogni x tempo
         }
     }
     void ThunderDebuff()
@@ -224,7 +217,7 @@ public class Enemy : MonoBehaviour
     {
         for (int ripetizione = 1; ripetizione < 10; ripetizione++)
         {
-            TakeDamage(2.5f);
+            TakeDamage(2.5f,0);
             yield return new WaitForSeconds(0.5f);
             
 
@@ -266,15 +259,12 @@ public class Enemy : MonoBehaviour
         Debug.Log("entro trigger");
         if (other.gameObject.CompareTag("FireZone"))
         {
-            Debug.Log("prendo fuoco");
+            
             FireDebuff();
             fireFX.SetActive(true);
-            //thunderFX.SetActive(true);
-            //StartCoroutine(Paralysis());
+            
 
-            //iceFX.SetActive(true);
-            //animator.speed = 0.5f;
-            //agent.speed = agent.speed / 2;
+            
         }
     }
     public void OnTriggerStay(Collider other)

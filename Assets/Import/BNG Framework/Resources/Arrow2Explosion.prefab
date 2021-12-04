@@ -15,6 +15,18 @@ MonoBehaviour:
   particle: {fileID: 1559262708590890885, guid: 32c8da1ff89b5d6449ad92a4110ff3a5,
     type: 3}
   spawnPoint: {fileID: 3721670296248240975}
+--- !u!114 &3429893099878210373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421452874705642542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ec8c65a577a8146a1b8e4262f700d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3721670296248240975
 GameObject:
   m_ObjectHideFlags: 0

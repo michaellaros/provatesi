@@ -11,7 +11,10 @@ public class CheckElement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        none = true;
+        fire = false;
+        thunder = false;
+        ice = false;
     }
 
     // Update is called once per frame

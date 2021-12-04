@@ -6,11 +6,20 @@ public class DamageProjectile : MonoBehaviour
 {
     public float damage;
     public float destroyTime;
+    private CheckElement sourceDamage;
+    public int damagetype;
+    public void Start()
+    {
+        
+        
+        
+
+    }
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.transform.GetComponent<Enemy>().TakeDamage(damage);
+            collision.transform.GetComponent<Enemy>().TakeDamage(damage, damagetype);
             StartCoroutine("DestroyMe");
 
         }

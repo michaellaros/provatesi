@@ -13,6 +13,13 @@ public class Enemy : MonoBehaviour
     public GameObject elementManager;
     public GameObject canvas;
     public GameObject slider;
+    public GameObject hitBone;
+    public GameObject firebone;
+    public GameObject thunderbone;
+    public GameObject icebone;
+    public GameObject walking;
+    public GameObject attack;
+    public GameObject death;
     public float damage;
     public float objectiveDamage;
     public float attackRate;
@@ -134,7 +141,9 @@ public class Enemy : MonoBehaviour
     private void Attack() {
         //animator attack TODO
         readyToAttack = false;
-        Invoke("AgainReadyToAttack", attackRate);
+        attack.SetActive(true);
+        StartCoroutine(AgainReadyToAttack());
+
     }
     void Shoot()
     {
@@ -144,6 +153,7 @@ public class Enemy : MonoBehaviour
     private void GoToTarget()
     {
         animator.SetBool("IsMoving", true);
+        walking.SetActive(true);
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
@@ -151,6 +161,7 @@ public class Enemy : MonoBehaviour
     private void StopEnemy()
     {
         animator.SetBool("IsMoving", false);
+        walking.SetActive(false);
         agent.isStopped = true;
     }
     //element 0 = none, 1 = fire, 2 = ice, 3 = thunder
@@ -163,24 +174,28 @@ public class Enemy : MonoBehaviour
         switch (element)
         {
             case 0:
+                Instantiate(hitBone, gameObject.transform.position, gameObject.transform.rotation);
                 break;
             case 1:
                 fireFX.SetActive(true);
                 FireDebuff();
+                //Instantiate(firebone, gameObject.transform.position, gameObject.transform.rotation);
                 break;
             case 2:
                 iceFX.SetActive(true);
                 animator.speed = 0.5f;
                 agent.speed = agent.speed / 2;
+                //Instantiate(icebone, gameObject.transform.position, gameObject.transform.rotation);
                 break;
             case 3:
+                
                 ThunderDebuff();
                 break;
         }
-
+        
         
         if (health <= 0f) {
-            Die(true);
+            StartCoroutine(Die(true));
         }
     }
     void ThunderDebuff()
@@ -199,6 +214,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             if(Random.Range(0, 100)< 60)
             {
+                //Instantiate(thunderbone, gameObject.transform.position, gameObject.transform.rotation);
                 animator.speed = 0;
                 agent.speed = 0;
             }
@@ -227,13 +243,16 @@ public class Enemy : MonoBehaviour
     }
 
     
-    void Die(bool drop) {
+    IEnumerator Die(bool drop) {
+        animator.SetBool("Die", true);
+        death.SetActive(true);
         if (drop)
         {
             DropItem();
             //ragdoll code
         }
         //add event to tell pc
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
     void DropItem() {
@@ -277,7 +296,7 @@ public class Enemy : MonoBehaviour
         {
                 obstacleFound = other.transform.gameObject;
                 obstacleFound.GetComponent<Objective>().TakeDamage(objectiveDamage);
-                Die(false);
+                StartCoroutine(Die(false));
         }
     }
     public void OnTriggerExit(Collider other)
@@ -306,7 +325,9 @@ public class Enemy : MonoBehaviour
         }
         target = nextWaypoint;
     }
-    void AgainReadyToAttack() {
+    IEnumerator AgainReadyToAttack() {
+        attack.SetActive(false);
+        yield return new WaitForSeconds(attackRate);
         readyToAttack = true;
     }
     public void FollowTarget()

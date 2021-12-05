@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 593219508700719423}
   - component: {fileID: 1401421289728151467}
   - component: {fileID: 7821661177789354810}
+  - component: {fileID: 2715358110180513306}
   m_Layer: 0
   m_Name: CombinedMeshes_3rd wall
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2715358110180513306
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352512751350128539}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 9f6e7b02d0772f147bfc6b44b10d4774, type: 2}

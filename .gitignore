@@ -58,3 +58,12 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/Assets/Editor/x64
+/Assets/Editor/x64.meta
+
+/Assets/Bakery
+/Assets/Bakery.meta
+
+
+Assets/Import/Oculus/VR/Plugins/1.57.0/Win64/OVRPlugin.dll
+Assets/CombinedMeshes_PolyKnights_Mat_01_-78202.asset
